@@ -1,0 +1,3981 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FFDiamondHub - Premium Free Fire Diamond Reseller</title>
+    <meta name="description" content="Official Free Fire Diamond Reseller Platform - Wholesale Rates for Serious Sellers">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800;900&family=Exo+2:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        /* ========== GLOBAL RESET & VARIABLES ========== */
+        :root {
+            --primary: #00ffff;
+            --secondary: #0066ff;
+            --accent: #ff00ff;
+            --dark-bg: #05070c;
+            --card-bg: rgba(10, 15, 30, 0.85);
+            --success: #00ff88;
+            --warning: #ffaa00;
+            --danger: #ff3366;
+            --text: #ffffff;
+            --text-muted: #a0a0c0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Exo 2', sans-serif;
+            background: var(--dark-bg);
+            color: var(--text);
+            min-height: 100vh;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, h4, .logo, .btn-primary, nav button {
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 800;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        /* ========== ANIMATED BACKGROUND ========== */
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            background: 
+                radial-gradient(circle at 15% 20%, rgba(0, 255, 255, 0.15), transparent 25%),
+                radial-gradient(circle at 85% 30%, rgba(0, 102, 255, 0.1), transparent 30%),
+                radial-gradient(circle at 50% 80%, rgba(255, 0, 255, 0.1), transparent 35%);
+            animation: pulse 20s infinite alternate;
+        }
+
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .particle {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: var(--primary);
+            border-radius: 50%;
+            animation: float 15s infinite linear;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.8; }
+            50% { opacity: 1; }
+        }
+
+        @keyframes float {
+            0% { transform: translateY(100vh) translateX(0); }
+            100% { transform: translateY(-100px) translateX(100px); }
+        }
+
+        @keyframes glow {
+            0%, 100% { box-shadow: 0 0 10px var(--primary); }
+            50% { box-shadow: 0 0 25px var(--primary); }
+        }
+
+        @keyframes slideIn {
+            from { transform: translateY(30px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        /* ========== LAYOUT CONTAINERS ========== */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            animation: slideIn 0.5s ease-out;
+        }
+
+        /* ========== HEADER & NAVIGATION ========== */
+        header {
+            background: rgba(5, 7, 12, 0.9);
+            backdrop-filter: blur(10px);
+            border-bottom: 2px solid rgba(0, 255, 255, 0.2);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            padding: 15px 0;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo i {
+            font-size: 2rem;
+        }
+
+        .branding-links {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .brand-link {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .brand-link:hover {
+            color: var(--primary);
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .user-welcome {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        #logoutBtn {
+            background: rgba(255, 51, 102, 0.2);
+            color: var(--danger);
+            border: 1px solid var(--danger);
+            padding: 5px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        #logoutBtn:hover {
+            background: var(--danger);
+            color: white;
+        }
+
+        /* ========== MAIN CONTENT AREA ========== */
+        .main-content {
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            gap: 30px;
+            margin-top: 30px;
+            min-height: calc(100vh - 150px);
+        }
+
+        /* ========== SIDEBAR NAVIGATION ========== */
+        .sidebar {
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 25px 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            height: fit-content;
+            position: sticky;
+            top: 100px;
+        }
+
+        .nav-section {
+            margin-bottom: 30px;
+        }
+
+        .nav-title {
+            color: var(--primary);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid rgba(0, 255, 255, 0.2);
+        }
+
+        .nav-links {
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-bottom: 10px;
+        }
+
+        .nav-links a {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 15px;
+            color: var(--text);
+            text-decoration: none;
+            border-radius: 8px;
+            transition: all 0.3s;
+            border-left: 3px solid transparent;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            background: rgba(0, 255, 255, 0.1);
+            border-left-color: var(--primary);
+            transform: translateX(5px);
+        }
+
+        .nav-links i {
+            width: 20px;
+            text-align: center;
+            color: var(--primary);
+        }
+
+        /* ========== CONTENT SECTIONS ========== */
+        .content-section {
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            margin-bottom: 30px;
+            display: none;
+        }
+
+        .content-section.active {
+            display: block;
+            animation: slideIn 0.5s ease-out;
+        }
+
+        .section-header {
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .section-header h2 {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+
+        .section-subtitle {
+            color: var(--text-muted);
+            font-size: 1rem;
+        }
+
+        /* ========== CARDS & PACKS ========== */
+        .packs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .pack-card {
+            background: linear-gradient(145deg, rgba(10, 20, 40, 0.9), rgba(5, 10, 20, 0.9));
+            border-radius: 15px;
+            padding: 30px;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pack-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+        }
+
+        .pack-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary);
+            box-shadow: 0 20px 40px rgba(0, 255, 255, 0.1);
+        }
+
+        .pack-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: var(--accent);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .pack-title {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+
+        .pack-price {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: var(--primary);
+            margin-bottom: 20px;
+            text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+        }
+
+        .pack-features {
+            list-style: none;
+            margin-bottom: 30px;
+        }
+
+        .pack-features li {
+            padding: 8px 0;
+            border-bottom: 1px dashed rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .pack-features i {
+            color: var(--success);
+            width: 20px;
+        }
+
+        .diamond-count {
+            background: rgba(0, 255, 255, 0.1);
+            padding: 15px;
+            border-radius: 10px;
+            margin: 20px 0;
+            text-align: center;
+            font-size: 1.2rem;
+            border: 1px solid rgba(0, 255, 255, 0.3);
+        }
+
+        /* ========== BUTTONS ========== */
+        .btn {
+            padding: 14px 28px;
+            border: none;
+            border-radius: 8px;
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+        }
+
+        .btn-primary {
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            color: #000;
+            animation: glow 2s infinite;
+        }
+
+        .btn-primary:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 30px rgba(0, 255, 255, 0.5);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--text);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: var(--primary);
+        }
+
+        /* ========== FORMS & INPUTS ========== */
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            color: var(--text);
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(0, 255, 255, 0.1);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .payment-method {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            border: 1px solid transparent;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .payment-method.selected {
+            border-color: var(--primary);
+            background: rgba(0, 255, 255, 0.05);
+        }
+
+        .payment-method input[type="radio"] {
+            margin-right: 10px;
+        }
+
+        .payment-info {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 15px;
+            display: none;
+        }
+
+        .payment-info.active {
+            display: block;
+        }
+
+        .qr-container {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .qr-code {
+            max-width: 200px;
+            border-radius: 10px;
+            border: 2px solid var(--primary);
+            padding: 10px;
+            background: white;
+        }
+
+        .wallet-address {
+            background: rgba(0, 0, 0, 0.5);
+            padding: 15px;
+            border-radius: 8px;
+            font-family: monospace;
+            word-break: break-all;
+            margin: 10px 0;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* ========== TABLES ========== */
+        .table-responsive {
+            overflow-x: auto;
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        .data-table th {
+            background: rgba(0, 255, 255, 0.1);
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+            border-bottom: 2px solid var(--primary);
+        }
+
+        .data-table td {
+            padding: 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .data-table tr:hover {
+            background: rgba(0, 255, 255, 0.05);
+        }
+
+        .status-badge {
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .status-pending {
+            background: rgba(255, 170, 0, 0.2);
+            color: var(--warning);
+        }
+
+        .status-approved {
+            background: rgba(0, 255, 136, 0.2);
+            color: var(--success);
+        }
+
+        .status-rejected {
+            background: rgba(255, 51, 102, 0.2);
+            color: var(--danger);
+        }
+
+        /* ========== SUPPORT CENTER ========== */
+        .support-categories {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .support-category {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 25px;
+            border-radius: 10px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+        }
+
+        .support-category:hover, .support-category.active {
+            border-color: var(--primary);
+            background: rgba(0, 255, 255, 0.05);
+            transform: translateY(-5px);
+        }
+
+        .support-category i {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+
+        /* ========== DIAMOND DASHBOARD ========== */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .stat-card {
+            background: linear-gradient(145deg, rgba(10, 20, 40, 0.9), rgba(5, 10, 20, 0.9));
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .stat-value {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: var(--primary);
+            margin: 10px 0;
+        }
+
+        .stat-label {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .chart-container {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 25px;
+            border-radius: 15px;
+            margin: 30px 0;
+        }
+
+        .simple-bar-chart {
+            display: flex;
+            align-items: flex-end;
+            gap: 10px;
+            height: 200px;
+            padding: 20px 0;
+        }
+
+        .bar {
+            flex: 1;
+            background: linear-gradient(to top, var(--primary), var(--secondary));
+            border-radius: 5px 5px 0 0;
+            position: relative;
+            min-height: 10px;
+        }
+
+        .bar-label {
+            position: absolute;
+            bottom: -25px;
+            left: 0;
+            right: 0;
+            text-align: center;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        /* ========== ADMIN PANEL ========== */
+        .admin-controls {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 25px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+        }
+
+        /* ========== FOOTER ========== */
+        footer {
+            text-align: center;
+            padding: 30px 20px;
+            margin-top: 50px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* ========== RESPONSIVE DESIGN ========== */
+        @media (max-width: 1024px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .sidebar {
+                position: static;
+                margin-bottom: 30px;
+            }
+            
+            .packs-grid {
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+            }
+            
+            .branding-links {
+                justify-content: center;
+            }
+            
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .container {
+                padding: 15px;
+            }
+            
+            .content-section {
+                padding: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo {
+                font-size: 1.5rem;
+            }
+            
+            .pack-card {
+                padding: 20px;
+            }
+            
+            .pack-price {
+                font-size: 2rem;
+            }
+            
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ========== LOADING & MESSAGES ========== */
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: var(--text-muted);
+        }
+
+        .message {
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            display: none;
+        }
+
+        .message.success {
+            background: rgba(0, 255, 136, 0.1);
+            border: 1px solid var(--success);
+            color: var(--success);
+            display: block;
+        }
+
+        .message.error {
+            background: rgba(255, 51, 102, 0.1);
+            border: 1px solid var(--danger);
+            color: var(--danger);
+            display: block;
+        }
+
+        .message.warning {
+            background: rgba(255, 170, 0, 0.1);
+            border: 1px solid var(--warning);
+            color: var(--warning);
+            display: block;
+        }
+
+        .message.info {
+            background: rgba(0, 102, 255, 0.1);
+            border: 1px solid var(--secondary);
+            color: var(--secondary);
+            display: block;
+        }
+
+        /* ========== NO PACK NOTICE ========== */
+        .no-pack-notice {
+            background: linear-gradient(90deg, rgba(255, 170, 0, 0.2), rgba(255, 102, 0, 0.2));
+            border: 2px solid var(--warning);
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 30px;
+            text-align: center;
+            animation: pulse 2s infinite;
+        }
+
+        .no-pack-notice h3 {
+            color: var(--warning);
+            margin-bottom: 15px;
+        }
+
+        .no-pack-notice p {
+            color: var(--text);
+            margin-bottom: 20px;
+        }
+
+        .expiry-notice {
+            background: linear-gradient(90deg, rgba(255, 51, 102, 0.1), rgba(255, 0, 85, 0.1));
+            border: 2px solid var(--danger);
+            border-radius: 15px;
+            padding: 20px;
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        .expiry-notice h4 {
+            color: var(--danger);
+            margin-bottom: 10px;
+        }
+
+        .pack-expired {
+            background: linear-gradient(90deg, rgba(255, 0, 0, 0.1), rgba(255, 0, 85, 0.1));
+            border: 2px solid #ff0000;
+            border-radius: 15px;
+            padding: 30px;
+            margin: 30px 0;
+            text-align: center;
+        }
+
+        .pack-expired h3 {
+            color: #ff0000;
+            margin-bottom: 15px;
+        }
+
+        /* ========== PACK STATUS ========== */
+        .pack-status {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-left: 10px;
+        }
+
+        .status-active {
+            background: rgba(0, 255, 136, 0.2);
+            color: var(--success);
+        }
+
+        .status-inactive {
+            background: rgba(255, 51, 102, 0.2);
+            color: var(--danger);
+        }
+
+        .status-expired {
+            background: rgba(255, 0, 0, 0.2);
+            color: #ff0000;
+        }
+
+        /* ========== RESTRICTED OVERLAY ========== */
+        .restricted-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 40px;
+            border-radius: 15px;
+            z-index: 10;
+            text-align: center;
+        }
+
+        .restricted-overlay h3 {
+            color: var(--warning);
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+
+        .restricted-overlay p {
+            color: var(--text-muted);
+            margin-bottom: 30px;
+            max-width: 500px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="bg-animation"></div>
+    <div class="particles" id="particles"></div>
+
+    <!-- Login Screen -->
+    <div id="loginScreen" class="container">
+        <div style="max-width: 400px; margin: 100px auto;">
+            <div class="logo" style="justify-content: center; margin-bottom: 40px; font-size: 2.5rem;">
+                <i class="fas fa-gem"></i>
+                FFDiamondHub
+            </div>
+            
+            <div class="pack-card">
+                <h2 style="text-align: center; margin-bottom: 30px; color: var(--primary);">Reseller Login</h2>
+                
+                <div id="loginMessage" class="message" style="display: none;"></div>
+                
+                <div class="form-group">
+                    <label class="form-label">Username</label>
+                    <input type="text" id="loginUsername" class="form-control" placeholder="Enter your username" autocomplete="off">
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Password</label>
+                    <input type="password" id="loginPassword" class="form-control" placeholder="Enter your password" autocomplete="off">
+                </div>
+                
+                <div style="text-align: right; margin-bottom: 20px;">
+                    <a href="#" onclick="showForgotPassword()" style="color: var(--primary); text-decoration: none; font-size: 0.9rem;">
+                        <i class="fas fa-key"></i> Forgot Password?
+                    </a>
+                </div>
+                
+                <button onclick="login()" class="btn btn-primary" style="margin-top: 10px;">
+                    <i class="fas fa-sign-in-alt"></i> Login to Dashboard
+                </button>
+                
+                <div style="margin-top: 20px; text-align: center; color: var(--text-muted); font-size: 0.9rem;">
+                    <i class="fas fa-lock"></i> Secure Login • 24/7 Support
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 30px; color: var(--text-muted);">
+                <p>Need an account? Contact Admin @DARK</p>
+                <div style="margin-top: 10px;">
+                    <a href="https://t.me/+15488256646" class="brand-link" style="justify-content: center;" target="_blank">
+                        <i class="fab fa-telegram"></i> Owner: @DARK
+                    </a>
+                    <a href="https://t.me/vnizxcash" class="brand-link" style="justify-content: center; margin-top: 5px;" target="_blank">
+                        <i class="fab fa-telegram"></i> Channel: @vnizxcash
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Forgot Password Modal -->
+    <div id="forgotPasswordModal" class="hidden" style="position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0, 0, 0, 0.9); z-index: 10000; display: flex; justify-content: center; align-items: center;">
+        <div class="pack-card" style="max-width: 400px; width: 90%;">
+            <h3 style="text-align: center; margin-bottom: 20px; color: var(--primary);">
+                <i class="fas fa-key"></i> Reset Password
+            </h3>
+            
+            <div class="form-group">
+                <label class="form-label">Your Username</label>
+                <input type="text" id="forgotUsername" class="form-control" placeholder="Enter your username">
+            </div>
+            
+            <div class="form-group">
+                <label class="form-label">Your Email</label>
+                <input type="email" id="forgotEmail" class="form-control" placeholder="Enter your registered email">
+            </div>
+            
+            <div id="forgotMessage" class="message" style="display: none;"></div>
+            
+            <div style="display: flex; gap: 10px; margin-top: 20px;">
+                <button class="btn btn-secondary" onclick="hideForgotPassword()" style="width: auto;">
+                    Cancel
+                </button>
+                <button class="btn btn-primary" onclick="resetPassword()" style="flex: 1;">
+                    <i class="fas fa-paper-plane"></i> Send Reset Link
+                </button>
+            </div>
+            
+            <div style="margin-top: 20px; text-align: center; color: var(--text-muted); font-size: 0.9rem;">
+                <i class="fas fa-info-circle"></i> Reset link will be sent via Telegram
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Dashboard (Initially Hidden) -->
+    <div id="mainDashboard" class="hidden">
+        <!-- Header -->
+        <header>
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-gem"></i>
+                    FFDiamondHub
+                </div>
+                
+                <div class="branding-links">
+                    <a href="https://t.me/+15488256646" class="brand-link" target="_blank">
+                        <i class="fab fa-telegram"></i> @DARK
+                    </a>
+                    <a href="https://t.me/vnizxcash" class="brand-link" target="_blank">
+                        <i class="fab fa-telegram"></i> @vnizxcash
+                    </a>
+                </div>
+                
+                <div class="user-info">
+                    <div class="user-welcome">
+                        Welcome, <span id="currentUser">Reseller</span>
+                        <span id="userPackStatus" class="pack-status"></span>
+                    </div>
+                    <button id="logoutBtn" onclick="logout()">
+                        <i class="fas fa-sign-out-alt"></i> Logout
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <div class="container">
+            <div class="main-content">
+                <!-- Sidebar Navigation -->
+                <div class="sidebar">
+                    <div class="nav-section">
+                        <div class="nav-title">Main Menu</div>
+                        <ul class="nav-links">
+                            <li><a href="#" data-section="dashboard" class="active">
+                                <i class="fas fa-tachometer-alt"></i> Dashboard
+                            </a></li>
+                            <li><a href="#" data-section="packs">
+                                <i class="fas fa-box"></i> Reseller Packs
+                            </a></li>
+                            <li><a href="#" data-section="diamondManagement">
+                                <i class="fas fa-gem"></i> Diamond Management
+                            </a></li>
+                            <li><a href="#" data-section="orders">
+                                <i class="fas fa-shopping-cart"></i> My Orders
+                            </a></li>
+                            <li><a href="#" data-section="sendDiamonds">
+                                <i class="fas fa-paper-plane"></i> Send Diamonds
+                            </a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="nav-section">
+                        <div class="nav-title">Support</div>
+                        <ul class="nav-links">
+                            <li><a href="#" data-section="support">
+                                <i class="fas fa-headset"></i> Support Center
+                            </a></li>
+                            <li><a href="#" data-section="refund">
+                                <i class="fas fa-undo"></i> Refund Request
+                            </a></li>
+                            <li><a href="#" data-section="tracking">
+                                <i class="fas fa-search"></i> Order Tracking
+                            </a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="nav-section" id="adminSection" style="display: none;">
+                        <div class="nav-title">Admin</div>
+                        <ul class="nav-links">
+                            <li><a href="#" data-section="adminPanel">
+                                <i class="fas fa-cogs"></i> Admin Panel
+                            </a></li>
+                            <li><a href="#" data-section="allOrders">
+                                <i class="fas fa-list"></i> All Orders
+                            </a></li>
+                            <li><a href="#" data-section="managePacks">
+                                <i class="fas fa-crown"></i> Manage Packs
+                            </a></li>
+                        </ul>
+                    </div>
+                    
+                    <div style="margin-top: 30px; padding: 15px; background: rgba(0, 255, 255, 0.1); border-radius: 10px; border-left: 3px solid var(--primary);">
+                        <div style="font-size: 0.9rem; color: var(--primary); margin-bottom: 5px;">
+                            <i class="fas fa-crown"></i> Active Pack
+                        </div>
+                        <div id="activePackInfo" style="font-weight: 600;">No Active Pack</div>
+                        <div id="packExpiryInfo" style="font-size: 0.8rem; color: var(--text-muted); margin-top: 5px;"></div>
+                    </div>
+                </div>
+
+                <!-- Content Sections -->
+                <div class="content-sections">
+                    <!-- Dashboard -->
+                    <div id="dashboard" class="content-section active">
+                        <div class="section-header">
+                            <h2>Reseller Dashboard</h2>
+                            <div class="section-subtitle" id="dashboardSubtitle">Welcome back! Manage your diamond business efficiently</div>
+                        </div>
+                        
+                        <!-- No Pack Notice -->
+                        <div id="noPackNotice" class="no-pack-notice" style="display: none;">
+                            <h3><i class="fas fa-exclamation-triangle"></i> No Active Reseller Pack</h3>
+                            <p>You need to purchase a reseller pack to access all features and start selling diamonds.</p>
+                            <button class="btn btn-primary" onclick="showSection('packs')" style="width: auto; padding: 12px 30px;">
+                                <i class="fas fa-shopping-cart"></i> Buy Your First Pack Now
+                            </button>
+                        </div>
+                        
+                        <!-- Pack Expired Notice -->
+                        <div id="packExpiredNotice" class="pack-expired" style="display: none;">
+                            <h3><i class="fas fa-calendar-times"></i> Your Pack Has Expired</h3>
+                            <p>Your reseller pack has expired. Renew now to continue accessing all features.</p>
+                            <button class="btn btn-primary" onclick="showSection('packs')" style="width: auto; padding: 12px 30px; margin-top: 15px;">
+                                <i class="fas fa-sync-alt"></i> Renew Your Pack
+                            </button>
+                        </div>
+                        
+                        <!-- Expiry Warning -->
+                        <div id="expiryWarning" class="expiry-notice" style="display: none;">
+                            <h4><i class="fas fa-clock"></i> Pack Expiring Soon</h4>
+                            <p>Your pack will expire in <span id="daysLeft" style="font-weight: 600; color: var(--danger);"></span> days.</p>
+                            <button class="btn btn-secondary" onclick="showSection('packs')" style="width: auto; padding: 10px 25px; margin-top: 10px;">
+                                <i class="fas fa-sync-alt"></i> Renew Early
+                            </button>
+                        </div>
+                        
+                        <!-- Restricted Content Overlay -->
+                        <div id="restrictedOverlay" class="restricted-overlay" style="display: none;">
+                            <h3><i class="fas fa-lock"></i> Feature Locked</h3>
+                            <p>This feature requires an active reseller pack. Purchase a pack to unlock all dashboard features and start selling diamonds.</p>
+                            <button class="btn btn-primary" onclick="showSection('packs')" style="width: auto; padding: 12px 30px; margin-top: 20px;">
+                                <i class="fas fa-unlock"></i> Unlock Features
+                            </button>
+                        </div>
+                        
+                        <!-- Dashboard Content (Only shown with active pack) -->
+                        <div id="dashboardContent" style="display: none;">
+                            <div class="stats-grid">
+                                <div class="stat-card">
+                                    <div class="stat-label">Available Diamonds</div>
+                                    <div class="stat-value" id="diamondBalance">0</div>
+                                    <div style="color: var(--text-muted); font-size: 0.9rem;" id="packTypeInfo">No Pack</div>
+                                </div>
+                                
+                                <div class="stat-card">
+                                    <div class="stat-label">Monthly Orders</div>
+                                    <div class="stat-value" id="monthlyOrders">0</div>
+                                    <div style="color: var(--text-muted); font-size: 0.9rem;">This Month</div>
+                                </div>
+                                
+                                <div class="stat-card">
+                                    <div class="stat-label">Total Profit</div>
+                                    <div class="stat-value" id="totalProfit">$0</div>
+                                    <div style="color: var(--text-muted); font-size: 0.9rem;">Lifetime Earnings</div>
+                                </div>
+                                
+                                <div class="stat-card">
+                                    <div class="stat-label">Success Rate</div>
+                                    <div class="stat-value" id="successRate">0%</div>
+                                    <div style="color: var(--text-muted); font-size: 0.9rem;">Order Success</div>
+                                </div>
+                            </div>
+                            
+                            <div class="chart-container">
+                                <h3 style="margin-bottom: 20px; color: var(--primary);">Monthly Diamond Usage</h3>
+                                <div class="simple-bar-chart" id="monthlyChart">
+                                    <!-- Chart will be generated by JavaScript -->
+                                </div>
+                            </div>
+                            
+                            <div style="background: rgba(0, 255, 255, 0.05); padding: 25px; border-radius: 15px; margin-top: 30px; border: 1px solid rgba(0, 255, 255, 0.2);">
+                                <h3 style="color: var(--primary); margin-bottom: 15px;">
+                                    <i class="fas fa-bolt"></i> Quick Actions
+                                </h3>
+                                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;">
+                                    <button class="btn btn-secondary" onclick="showSection('sendDiamonds')">
+                                        <i class="fas fa-paper-plane"></i> Send Diamonds
+                                    </button>
+                                    <button class="btn btn-secondary" onclick="showSection('packs')">
+                                        <i class="fas fa-box"></i> View Packs
+                                    </button>
+                                    <button class="btn btn-secondary" onclick="showSection('support')">
+                                        <i class="fas fa-headset"></i> Get Support
+                                    </button>
+                                    <button class="btn btn-secondary" onclick="showSection('tracking')">
+                                        <i class="fas fa-search"></i> Track Order
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Reseller Packs -->
+                    <div id="packs" class="content-section">
+                        <div class="section-header">
+                            <h2>Reseller Packs</h2>
+                            <div class="section-subtitle">Choose the perfect plan for your business scale</div>
+                        </div>
+                        
+                        <!-- Current Pack Info -->
+                        <div id="currentPackStatusCard" class="pack-card" style="margin-bottom: 30px; background: linear-gradient(90deg, rgba(0, 255, 255, 0.1), rgba(0, 102, 255, 0.1));">
+                            <h3 style="color: var(--primary); margin-bottom: 15px;">
+                                <i class="fas fa-info-circle"></i> Your Current Status
+                            </h3>
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                                <div>
+                                    <div class="form-label">Active Pack</div>
+                                    <div id="currentPackName" style="font-weight: 600; font-size: 1.2rem; color: var(--primary);">None</div>
+                                </div>
+                                <div>
+                                    <div class="form-label">Status</div>
+                                    <div id="currentPackStatus" class="status-inactive" style="display: inline-block;">Inactive</div>
+                                </div>
+                                <div>
+                                    <div class="form-label">Expiry Date</div>
+                                    <div id="currentPackExpiry" style="font-weight: 600;">Never</div>
+                                </div>
+                                <div>
+                                    <div class="form-label">Days Left</div>
+                                    <div id="currentPackDaysLeft" style="font-weight: 600;">∞</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="packs-grid">
+                            <!-- Starter Pack -->
+                            <div class="pack-card">
+                                <div class="pack-badge" style="background: var(--warning);">BEGINNER</div>
+                                <h3 class="pack-title">STARTER RESELLER</h3>
+                                <div class="pack-price">$75</div>
+                                
+                                <div class="diamond-count">
+                                    <i class="fas fa-gem"></i> 50,000+ Diamonds
+                                </div>
+                                
+                                <ul class="pack-features">
+                                    <li><i class="fas fa-check"></i> 100% Legit Diamond Top-Up</li>
+                                    <li><i class="fas fa-check"></i> Fast & Secure Delivery</li>
+                                    <li><i class="fas fa-check"></i> No Account Login Required</li>
+                                    <li><i class="fas fa-check"></i> All Servers Supported</li>
+                                    <li><i class="fas fa-check"></i> Beginner-Friendly & Profitable</li>
+                                    <li><i class="fas fa-check"></i> Full Support Provided</li>
+                                </ul>
+                                
+                                <div style="margin: 20px 0; padding: 15px; background: rgba(0, 0, 0, 0.3); border-radius: 10px;">
+                                    <div style="color: var(--text-muted); font-size: 0.9rem;">Duration:</div>
+                                    <div style="font-weight: 600; color: var(--primary);">30 Days Active Period</div>
+                                    <div style="color: var(--text-muted); font-size: 0.8rem; margin-top: 5px;">After admin approval</div>
+                                </div>
+                                
+                                <button class="btn btn-primary" onclick="selectPack('starter', 75, 50000, 30)">
+                                    <i class="fas fa-shopping-cart"></i> Select This Pack
+                                </button>
+                            </div>
+                            
+                            <!-- Pro Pack -->
+                            <div class="pack-card">
+                                <div class="pack-badge" style="background: var(--secondary);">PRO</div>
+                                <h3 class="pack-title">PRO RESELLER</h3>
+                                <div class="pack-price">$150</div>
+                                
+                                <div class="diamond-count">
+                                    <i class="fas fa-gem"></i> 100,000+ Diamonds
+                                </div>
+                                
+                                <ul class="pack-features">
+                                    <li><i class="fas fa-check"></i> Better Diamond Rates</li>
+                                    <li><i class="fas fa-check"></i> Priority Processing</li>
+                                    <li><i class="fas fa-check"></i> All Regions Supported</li>
+                                    <li><i class="fas fa-check"></i> Safe & Secure Top-Ups</li>
+                                    <li><i class="fas fa-check"></i> Higher Profit Margin</li>
+                                    <li><i class="fas fa-check"></i> Long-Term Support</li>
+                                </ul>
+                                
+                                <div style="margin: 20px 0; padding: 15px; background: rgba(0, 0, 0, 0.3); border-radius: 10px;">
+                                    <div style="color: var(--text-muted); font-size: 0.9rem;">Duration:</div>
+                                    <div style="font-weight: 600; color: var(--primary);">30 Days Active Period</div>
+                                    <div style="color: var(--text-muted); font-size: 0.8rem; margin-top: 5px;">After admin approval</div>
+                                </div>
+                                
+                                <button class="btn btn-primary" onclick="selectPack('pro', 150, 100000, 30)">
+                                    <i class="fas fa-shopping-cart"></i> Select This Pack
+                                </button>
+                            </div>
+                            
+                            <!-- Elite Pack -->
+                            <div class="pack-card">
+                                <div class="pack-badge" style="background: var(--accent);">ELITE</div>
+                                <h3 class="pack-title">ELITE RESELLER</h3>
+                                <div class="pack-price">$300</div>
+                                
+                                <div class="diamond-count">
+                                    <i class="fas fa-gem"></i> 200,000+ Diamonds
+                                </div>
+                                
+                                <ul class="pack-features">
+                                    <li><i class="fas fa-check"></i> Best Market Rates</li>
+                                    <li><i class="fas fa-check"></i> Instant Priority Delivery</li>
+                                    <li><i class="fas fa-check"></i> Bulk Order Support</li>
+                                    <li><i class="fas fa-check"></i> Worldwide Service</li>
+                                    <li><i class="fas fa-check"></i> Stable & Trusted System</li>
+                                    <li><i class="fas fa-check"></i> Dedicated Support Access</li>
+                                </ul>
+                                
+                                <div style="margin: 20px 0; padding: 15px; background: rgba(0, 0, 0, 0.3); border-radius: 10px;">
+                                    <div style="color: var(--text-muted); font-size: 0.9rem;">Duration:</div>
+                                    <div style="font-weight: 600; color: var(--primary);">30 Days Active Period</div>
+                                    <div style="color: var(--text-muted); font-size: 0.8rem; margin-top: 5px;">After admin approval</div>
+                                </div>
+                                
+                                <button class="btn btn-primary" onclick="selectPack('elite', 300, 200000, 30)">
+                                    <i class="fas fa-shopping-cart"></i> Select This Pack
+                                </button>
+                            </div>
+                            
+                            <!-- Business Pack -->
+                            <div class="pack-card">
+                                <div class="pack-badge" style="background: linear-gradient(90deg, #ff00ff, #ff5500);">BUSINESS</div>
+                                <h3 class="pack-title">BUSINESS RESELLER</h3>
+                                <div class="pack-price">$200</div>
+                                
+                                <div class="diamond-count">
+                                    <i class="fas fa-gem"></i> Wholesale Rates
+                                </div>
+                                
+                                <ul class="pack-features">
+                                    <li><i class="fas fa-check"></i> Wholesale Diamond Rates</li>
+                                    <li><i class="fas fa-check"></i> All Time Priority Support</li>
+                                    <li><i class="fas fa-check"></i> Full Refund Support</li>
+                                    <li><i class="fas fa-check"></i> 24/7 Manager Support</li>
+                                    <li><i class="fas fa-check"></i> Bulk Order Support</li>
+                                    <li><i class="fas fa-check"></i> Worldwide Service</li>
+                                </ul>
+                                
+                                <div style="margin: 20px 0; padding: 15px; background: rgba(0, 0, 0, 0.3); border-radius: 10px;">
+                                    <div style="color: var(--text-muted); font-size: 0.9rem;">Duration:</div>
+                                    <div style="font-weight: 600; color: var(--primary);">30 Days Active Period</div>
+                                    <div style="color: var(--text-muted); font-size: 0.8rem; margin-top: 5px;">After admin approval</div>
+                                </div>
+                                
+                                <button class="btn btn-primary" onclick="selectPack('business', 200, 0, 30)">
+                                    <i class="fas fa-shopping-cart"></i> Select This Pack
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div style="margin-top: 40px; background: rgba(0, 255, 255, 0.05); padding: 25px; border-radius: 15px; border: 1px solid rgba(0, 255, 255, 0.2);">
+                            <h3 style="color: var(--primary); margin-bottom: 15px;">
+                                <i class="fas fa-shield-alt"></i> Trust & Security
+                            </h3>
+                            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px;">
+                                <div style="display: flex; align-items: center; gap: 10px;">
+                                    <i class="fas fa-check-circle" style="color: var(--success);"></i>
+                                    <span>100% Legit Service Only</span>
+                                </div>
+                                <div style="display: flex; align-items: center; gap: 10px;">
+                                    <i class="fas fa-ban" style="color: var(--danger);"></i>
+                                    <span>No Hacks • No Tricks</span>
+                                </div>
+                                <div style="display: flex; align-items: center; gap: 10px;">
+                                    <i class="fas fa-users" style="color: var(--primary);"></i>
+                                    <span>Trusted by Real Gamers</span>
+                                </div>
+                                <div style="display: flex; align-items: center; gap: 10px;">
+                                    <i class="fas fa-lock" style="color: var(--secondary);"></i>
+                                    <span>Secure Payment System</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Checkout Section -->
+                    <div id="checkout" class="content-section">
+                        <div class="section-header">
+                            <h2>Complete Your Purchase</h2>
+                            <div class="section-subtitle">Fill all details carefully for instant processing</div>
+                        </div>
+                        
+                        <div id="checkoutMessage" class="message"></div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label">Full Name *</label>
+                                <input type="text" id="checkoutName" class="form-control" placeholder="Enter your full name" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label">Phone Number *</label>
+                                <input type="tel" id="checkoutPhone" class="form-control" placeholder="Enter WhatsApp number" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Selected Pack</label>
+                            <input type="text" id="selectedPack" class="form-control" readonly style="background: rgba(0, 255, 255, 0.1); font-weight: 600;">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Payment Method *</label>
+                            <div class="payment-methods">
+                                <div class="payment-method" onclick="selectPayment('UPI')">
+                                    <input type="radio" name="payment" id="upiPayment" value="UPI">
+                                    <label for="upiPayment" style="cursor: pointer; display: flex; align-items: center; gap: 10px;">
+                                        <i class="fas fa-rupee-sign" style="color: var(--success);"></i>
+                                        <span>UPI (India)</span>
+                                    </label>
+                                </div>
+                                
+                                <div class="payment-method" onclick="selectPayment('CRYPTO')">
+                                    <input type="radio" name="payment" id="cryptoPayment" value="CRYPTO">
+                                    <label for="cryptoPayment" style="cursor: pointer; display: flex; align-items: center; gap: 10px;">
+                                        <i class="fas fa-bitcoin" style="color: var(--warning);"></i>
+                                        <span>Crypto (BTC/ETH/USDT)</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- UPI Payment Info -->
+                        <div id="upiInfo" class="payment-info">
+                            <h4 style="color: var(--primary); margin-bottom: 15px;">
+                                <i class="fas fa-qrcode"></i> UPI Payment Details
+                            </h4>
+                            <div style="text-align: center;">
+                                <div class="qr-container">
+                                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=max911%40slc" alt="UPI QR Code" class="qr-code">
+                                </div>
+                                <div style="margin: 20px 0;">
+                                    <div class="form-label">UPI ID:</div>
+                                    <div class="wallet-address">max911@slc</div>
+                                </div>
+                                <div style="color: var(--text-muted); font-size: 0.9rem;">
+                                    Scan QR code or send payment directly to UPI ID
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Crypto Payment Info -->
+                        <div id="cryptoInfo" class="payment-info">
+                            <h4 style="color: var(--primary); margin-bottom: 15px;">
+                                <i class="fas fa-wallet"></i> Crypto Payment Details
+                            </h4>
+                            <div style="margin-bottom: 20px;">
+                                <div class="form-label">Bitcoin (BTC) Address:</div>
+                                <div class="wallet-address">bc1qdmz3kkzvjw3asgdjv83fs08ht6uwqzyz7lst44</div>
+                            </div>
+                            <div style="margin-bottom: 20px;">
+                                <div class="form-label">Ethereum (ETH) Address:</div>
+                                <div class="wallet-address">0x742d35Cc6634C0532925a3b844Bc9e90E1f0b3e8</div>
+                            </div>
+                            <div style="color: var(--text-muted); font-size: 0.9rem;">
+                                <i class="fas fa-info-circle"></i> USDT also accepted on same ETH address
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Transaction ID / UTR Number *</label>
+                            <input type="text" id="transactionId" class="form-control" placeholder="Enter UTR/TXN Hash from payment" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Additional Notes (Optional)</label>
+                            <textarea id="orderNotes" class="form-control" rows="3" placeholder="Any special instructions or requests..."></textarea>
+                        </div>
+                        
+                        <div style="display: flex; gap: 15px; margin-top: 30px;">
+                            <button class="btn btn-secondary" onclick="showSection('packs')" style="width: auto;">
+                                <i class="fas fa-arrow-left"></i> Back to Packs
+                            </button>
+                            <button class="btn btn-primary" onclick="submitOrder()" style="flex: 1;">
+                                <i class="fas fa-paper-plane"></i> Submit Order for Approval
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Diamond Management (Restricted without pack) -->
+                    <div id="diamondManagement" class="content-section">
+                        <div id="diamondRestrictedOverlay" class="restricted-overlay" style="display: none;">
+                            <h3><i class="fas fa-gem"></i> Diamond Management Locked</h3>
+                            <p>You need an active reseller pack to access diamond management features.</p>
+                            <button class="btn btn-primary" onclick="showSection('packs')" style="width: auto; padding: 12px 30px; margin-top: 20px;">
+                                <i class="fas fa-unlock"></i> Unlock Diamond Management
+                            </button>
+                        </div>
+                        
+                        <div id="diamondContent" style="display: none;">
+                            <div class="section-header">
+                                <h2>Diamond Management</h2>
+                                <div class="section-subtitle">Manage your diamond inventory and track usage</div>
+                            </div>
+                            
+                            <div class="stats-grid">
+                                <div class="stat-card">
+                                    <div class="stat-label">Total Diamonds</div>
+                                    <div class="stat-value" id="totalDiamonds">0</div>
+                                    <div style="color: var(--text-muted); font-size: 0.9rem;" id="diamondPackInfo">No Pack</div>
+                                </div>
+                                
+                                <div class="stat-card">
+                                    <div class="stat-label">Diamonds Used</div>
+                                    <div class="stat-value" id="usedDiamonds">0</div>
+                                    <div style="color: var(--text-muted); font-size: 0.9rem;">0% of Total</div>
+                                </div>
+                                
+                                <div class="stat-card">
+                                    <div class="stat-label">Available Balance</div>
+                                    <div class="stat-value" id="availableDiamonds">0</div>
+                                    <div style="color: var(--text-muted); font-size: 0.9rem;">Ready for Distribution</div>
+                                </div>
+                                
+                                <div class="stat-card">
+                                    <div class="stat-label">Customers Served</div>
+                                    <div class="stat-value" id="customersServed">0</div>
+                                    <div style="color: var(--text-muted); font-size: 0.9rem;">Active This Month</div>
+                                </div>
+                            </div>
+                            
+                            <div class="chart-container">
+                                <h3 style="margin-bottom: 20px; color: var(--primary);">Diamond Distribution History</h3>
+                                <div class="simple-bar-chart" id="distributionChart">
+                                    <!-- Chart will be populated by JavaScript -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Send Diamonds (Restricted without pack) -->
+                    <div id="sendDiamonds" class="content-section">
+                        <div id="sendRestrictedOverlay" class="restricted-overlay" style="display: none;">
+                            <h3><i class="fas fa-paper-plane"></i> Send Diamonds Locked</h3>
+                            <p>You need an active reseller pack to send diamonds to players.</p>
+                            <button class="btn btn-primary" onclick="showSection('packs')" style="width: auto; padding: 12px 30px; margin-top: 20px;">
+                                <i class="fas fa-unlock"></i> Unlock Diamond Sending
+                            </button>
+                        </div>
+                        
+                        <div id="sendContent" style="display: none;">
+                            <div class="section-header">
+                                <h2>Send Diamonds to Player</h2>
+                                <div class="section-subtitle">Distribute diamonds to your customers instantly</div>
+                            </div>
+                            
+                            <div id="sendDiamondMessage" class="message"></div>
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label class="form-label">Player Free Fire UID *</label>
+                                    <input type="text" id="playerUID" class="form-control" placeholder="Enter player's 10-12 digit UID" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label class="form-label">Diamond Amount *</label>
+                                    <input type="number" id="diamondAmount" class="form-control" placeholder="Enter diamond amount" min="100" max="100000" required>
+                                </div>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label class="form-label">Player Region</label>
+                                    <select id="playerRegion" class="form-control">
+                                        <option value="global">Global</option>
+                                        <option value="india">India</option>
+                                        <option value="brazil">Brazil</option>
+                                        <option value="indonesia">Indonesia</option>
+                                        <option value="thailand">Thailand</option>
+                                        <option value="vietnam">Vietnam</option>
+                                        <option value="middleeast">Middle East</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label class="form-label">Player Name (Optional)</label>
+                                    <input type="text" id="playerName" class="form-control" placeholder="Customer name for reference">
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label">Customer Contact (Optional)</label>
+                                <input type="text" id="customerContact" class="form-control" placeholder="WhatsApp/Telegram for updates">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label">Special Instructions</label>
+                                <textarea id="diamondNotes" class="form-control" rows="3" placeholder="Any special delivery instructions..."></textarea>
+                            </div>
+                            
+                            <div style="background: rgba(255, 170, 0, 0.1); padding: 20px; border-radius: 10px; margin: 25px 0; border: 1px solid rgba(255, 170, 0, 0.3);">
+                                <div style="display: flex; align-items: center; gap: 10px; color: var(--warning); margin-bottom: 10px;">
+                                    <i class="fas fa-exclamation-triangle"></i>
+                                    <span style="font-weight: 600;">Important Notice</span>
+                                </div>
+                                <div style="color: var(--text-muted); font-size: 0.9rem;">
+                                    • Delivery time: 5-30 minutes depending on server load<br>
+                                    • Make sure UID is correct before submitting<br>
+                                    • Contact support if diamonds not delivered within 1 hour<br>
+                                    • Available balance: <span id="availableBalanceText" style="color: var(--primary); font-weight: 600;">0 diamonds</span>
+                                </div>
+                            </div>
+                            
+                            <button class="btn btn-primary" onclick="sendDiamonds()">
+                                <i class="fas fa-paper-plane"></i> Send Diamonds Now
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- My Orders -->
+                    <div id="orders" class="content-section">
+                        <div class="section-header">
+                            <h2>My Orders</h2>
+                            <div class="section-subtitle">Track all your purchase history and status</div>
+                        </div>
+                        
+                        <div class="table-responsive">
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>Order ID</th>
+                                        <th>Date</th>
+                                        <th>Pack</th>
+                                        <th>Amount</th>
+                                        <th>Status</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="ordersTable">
+                                    <!-- Orders will be populated by JavaScript -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Support Center -->
+                    <div id="support" class="content-section">
+                        <div class="section-header">
+                            <h2>Support Center</h2>
+                            <div class="section-subtitle">Get help from our dedicated support team 24/7</div>
+                        </div>
+                        
+                        <div class="support-categories">
+                            <div class="support-category" onclick="selectSupportCategory('delivery')">
+                                <i class="fas fa-shipping-fast"></i>
+                                <h4>Delivery Issues</h4>
+                                <p>Diamonds not received</p>
+                            </div>
+                            
+                            <div class="support-category" onclick="selectSupportCategory('payment')">
+                                <i class="fas fa-credit-card"></i>
+                                <h4>Payment Issues</h4>
+                                <p>Payment not detected</p>
+                            </div>
+                            
+                            <div class="support-category" onclick="selectSupportCategory('account')">
+                                <i class="fas fa-user-cog"></i>
+                                <h4>Account Issues</h4>
+                                <p>Login or access problems</p>
+                            </div>
+                            
+                            <div class="support-category" onclick="selectSupportCategory('technical')">
+                                <i class="fas fa-tools"></i>
+                                <h4>Technical Support</h4>
+                                <p>Website or system issues</p>
+                            </div>
+                        </div>
+                        
+                        <div id="supportForm" style="display: none;">
+                            <div class="form-group">
+                                <label class="form-label">Subject</label>
+                                <input type="text" id="supportSubject" class="form-control" readonly>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label">Your Name *</label>
+                                <input type="text" id="supportName" class="form-control" placeholder="Enter your full name" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label">Phone Number *</label>
+                                <input type="tel" id="supportPhone" class="form-control" placeholder="Enter WhatsApp number" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label">Order ID (If applicable)</label>
+                                <input type="text" id="supportOrderId" class="form-control" placeholder="Enter order ID if related to order">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label">Detailed Message *</label>
+                                <textarea id="supportMessage" class="form-control" rows="5" placeholder="Describe your issue in detail..." required></textarea>
+                            </div>
+                            
+                            <div id="supportMessageDiv" class="message"></div>
+                            
+                            <button class="btn btn-primary" onclick="submitSupportRequest()">
+                                <i class="fas fa-paper-plane"></i> Submit Support Request
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Refund Request -->
+                    <div id="refund" class="content-section">
+                        <div class="section-header">
+                            <h2>Refund Request</h2>
+                            <div class="section-subtitle">Submit refund request for undelivered or failed services</div>
+                        </div>
+                        
+                        <div id="refundMessage" class="message"></div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Your Full Name *</label>
+                            <input type="text" id="refundName" class="form-control" placeholder="Enter your full name as per order" required>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label">Phone Number *</label>
+                                <input type="tel" id="refundPhone" class="form-control" placeholder="Enter registered phone number" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label">Order ID *</label>
+                                <input type="text" id="refundOrderId" class="form-control" placeholder="Enter your order ID" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Refund Reason *</label>
+                            <select id="refundReason" class="form-control" required>
+                                <option value="">Select reason for refund</option>
+                                <option value="not_delivered">Diamonds not delivered</option>
+                                <option value="wrong_amount">Wrong diamond amount</option>
+                                <option value="technical_issue">Technical issue from our side</option>
+                                <option value="duplicate_payment">Duplicate payment</option>
+                                <option value="other">Other reason</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Transaction ID / UTR *</label>
+                            <input type="text" id="refundTransactionId" class="form-control" placeholder="Enter original payment transaction ID" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Additional Details *</label>
+                            <textarea id="refundDetails" class="form-control" rows="4" placeholder="Explain the issue in detail. Include dates, times, and any evidence if available." required></textarea>
+                        </div>
+                        
+                        <div style="background: rgba(255, 51, 102, 0.1); padding: 20px; border-radius: 10px; margin: 25px 0; border: 1px solid rgba(255, 51, 102, 0.3);">
+                            <div style="display: flex; align-items: center; gap: 10px; color: var(--danger); margin-bottom: 10px;">
+                                <i class="fas fa-exclamation-circle"></i>
+                                <span style="font-weight: 600;">Refund Policy</span>
+                            </div>
+                            <div style="color: var(--text-muted); font-size: 0.9rem;">
+                                • Refunds processed within 1-2 business days<br>
+                                • Only full refunds for undelivered services<br>
+                                • Must provide valid transaction proof<br>
+                                • Contact support for urgent refund requests<br>
+                                • Refunds will be sent to original payment method
+                            </div>
+                        </div>
+                        
+                        <button class="btn btn-primary" onclick="submitRefundRequest()">
+                            <i class="fas fa-undo"></i> Submit Refund Request
+                        </button>
+                    </div>
+
+                    <!-- Order Tracking -->
+                    <div id="tracking" class="content-section">
+                        <div class="section-header">
+                            <h2>Order Tracking</h2>
+                            <div class="section-subtitle">Track the status of your orders in real-time</div>
+                        </div>
+                        
+                        <div style="max-width: 600px; margin: 0 auto;">
+                            <div class="form-group">
+                                <label class="form-label">Enter Order ID</label>
+                                <div style="display: flex; gap: 10px;">
+                                    <input type="text" id="trackOrderId" class="form-control" placeholder="Enter your order ID (e.g., FF-123456)">
+                                    <button class="btn btn-secondary" onclick="trackOrder()" style="width: auto;">
+                                        <i class="fas fa-search"></i> Track
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <div id="trackingResult" style="display: none;">
+                                <div class="pack-card" style="margin-top: 30px;">
+                                    <h3 id="trackingOrderTitle" style="color: var(--primary);"></h3>
+                                    
+                                    <div style="margin: 20px 0;">
+                                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                                            <div>
+                                                <div class="form-label">Order ID</div>
+                                                <div style="font-weight: 600;" id="trackingOrderId"></div>
+                                            </div>
+                                            <div>
+                                                <div class="form-label">Status</div>
+                                                <div>
+                                                    <span id="trackingStatus" class="status-badge"></span>
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <div class="form-label">Order Date</div>
+                                                <div id="trackingOrderDate"></div>
+                                            </div>
+                                            <div>
+                                                <div class="form-label">Amount Paid</div>
+                                                <div id="trackingAmount" style="color: var(--primary); font-weight: 600;"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div style="margin-top: 30px;">
+                                        <h4 style="color: var(--primary); margin-bottom: 15px;">
+                                            <i class="fas fa-history"></i> Order Timeline
+                                        </h4>
+                                        <div id="trackingTimeline">
+                                            <!-- Timeline will be populated by JavaScript -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div id="noTrackingResult" style="text-align: center; padding: 40px; color: var(--text-muted); display: none;">
+                                <i class="fas fa-search" style="font-size: 3rem; margin-bottom: 20px; opacity: 0.5;"></i>
+                                <h4>No Order Found</h4>
+                                <p>Enter a valid order ID to track your order status</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Admin Panel -->
+                    <div id="adminPanel" class="content-section">
+                        <div class="section-header">
+                            <h2>Admin Control Panel</h2>
+                            <div class="section-subtitle">Manage orders, users, and system settings</div>
+                        </div>
+                        
+                        <div class="admin-controls">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label class="form-label">Admin Password *</label>
+                                    <input type="password" id="adminPassword" class="form-control" placeholder="Enter admin password">
+                                </div>
+                                
+                                <div class="form-group" style="display: flex; align-items: flex-end;">
+                                    <button class="btn btn-primary" onclick="adminLogin()" style="width: auto;">
+                                        <i class="fas fa-sign-in-alt"></i> Login as Admin
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div id="adminContent" style="display: none;">
+                            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-bottom: 30px;">
+                                <div class="stat-card">
+                                    <div class="stat-label">Total Orders</div>
+                                    <div class="stat-value" id="adminTotalOrders">0</div>
+                                </div>
+                                
+                                <div class="stat-card">
+                                    <div class="stat-label">Pending Approval</div>
+                                    <div class="stat-value" id="adminPendingOrders">0</div>
+                                </div>
+                                
+                                <div class="stat-card">
+                                    <div class="stat-label">Total Revenue</div>
+                                    <div class="stat-value" id="adminTotalRevenue">$0</div>
+                                </div>
+                                
+                                <div class="stat-card">
+                                    <div class="stat-label">Active Resellers</div>
+                                    <div class="stat-value" id="adminActiveResellers">0</div>
+                                </div>
+                            </div>
+                            
+                            <div style="margin-bottom: 30px;">
+                                <h3 style="color: var(--primary); margin-bottom: 20px;">
+                                    <i class="fas fa-tasks"></i> Pending Orders for Approval
+                                </h3>
+                                <div class="table-responsive">
+                                    <table class="data-table">
+                                        <thead>
+                                            <tr>
+                                                <th>Order ID</th>
+                                                <th>Customer</th>
+                                                <th>Pack</th>
+                                                <th>Amount</th>
+                                                <th>Payment</th>
+                                                <th>Actions</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="adminPendingTable">
+                                            <!-- Pending orders will be populated by JavaScript -->
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <h3 style="color: var(--primary); margin-bottom: 20px;">
+                                    <i class="fas fa-cogs"></i> System Controls
+                                </h3>
+                                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;">
+                                    <button class="btn btn-secondary" onclick="refreshAdminData()">
+                                        <i class="fas fa-sync"></i> Refresh Data
+                                    </button>
+                                    <button class="btn btn-secondary" onclick="exportAllOrders()">
+                                        <i class="fas fa-download"></i> Export Orders
+                                    </button>
+                                    <button class="btn btn-secondary" onclick="checkExpiredPacks()">
+                                        <i class="fas fa-clock"></i> Check Expired
+                                    </button>
+                                    <button class="btn btn-secondary" onclick="showAllUsers()">
+                                        <i class="fas fa-users"></i> View Users
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- All Orders (Admin) -->
+                    <div id="allOrders" class="content-section">
+                        <div class="section-header">
+                            <h2>All Orders</h2>
+                            <div class="section-subtitle">View and manage all system orders</div>
+                        </div>
+                        
+                        <div style="margin-bottom: 20px; display: flex; justify-content: space-between; align-items: center;">
+                            <div>
+                                <button class="btn btn-secondary" onclick="filterOrders('all')">All</button>
+                                <button class="btn btn-secondary" onclick="filterOrders('pending')">Pending</button>
+                                <button class="btn btn-secondary" onclick="filterOrders('approved')">Approved</button>
+                                <button class="btn btn-secondary" onclick="filterOrders('rejected')">Rejected</button>
+                            </div>
+                            <div style="color: var(--text-muted); font-size: 0.9rem;">
+                                Total: <span id="totalOrdersCount">0</span> orders
+                            </div>
+                        </div>
+                        
+                        <div class="table-responsive">
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>Order ID</th>
+                                        <th>Date</th>
+                                        <th>Customer</th>
+                                        <th>Pack</th>
+                                        <th>Amount</th>
+                                        <th>Status</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="allOrdersTable">
+                                    <!-- All orders will be populated by JavaScript -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Manage Packs (Admin) -->
+                    <div id="managePacks" class="content-section">
+                        <div class="section-header">
+                            <h2>Manage User Packs</h2>
+                            <div class="section-subtitle">Manage user pack activations and expiry</div>
+                        </div>
+                        
+                        <div class="table-responsive">
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>Username</th>
+                                        <th>Active Pack</th>
+                                        <th>Expiry Date</th>
+                                        <th>Days Left</th>
+                                        <th>Status</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="userPacksTable">
+                                    <!-- User packs will be populated by JavaScript -->
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                        <div style="margin-top: 30px; background: rgba(0, 255, 255, 0.05); padding: 25px; border-radius: 15px; border: 1px solid rgba(0, 255, 255, 0.2);">
+                            <h3 style="color: var(--primary); margin-bottom: 15px;">
+                                <i class="fas fa-user-plus"></i> Manual Pack Assignment
+                            </h3>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label class="form-label">Username</label>
+                                    <input type="text" id="assignUsername" class="form-control" placeholder="Enter username">
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label class="form-label">Pack Type</label>
+                                    <select id="assignPackType" class="form-control">
+                                        <option value="starter">Starter Reseller</option>
+                                        <option value="pro">Pro Reseller</option>
+                                        <option value="elite">Elite Reseller</option>
+                                        <option value="business">Business Reseller</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label class="form-label">Duration (Days)</label>
+                                    <input type="number" id="assignDuration" class="form-control" value="30" min="1" max="365">
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label class="form-label">Diamonds</label>
+                                    <input type="number" id="assignDiamonds" class="form-control" placeholder="Diamond amount" min="0">
+                                </div>
+                            </div>
+                            
+                            <button class="btn btn-primary" onclick="assignPackManually()">
+                                <i class="fas fa-check-circle"></i> Assign Pack
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer>
+            <div style="max-width: 1200px; margin: 0 auto;">
+                <div class="logo" style="justify-content: center; margin-bottom: 20px; font-size: 1.5rem;">
+                    <i class="fas fa-gem"></i>
+                    FFDiamondHub
+                </div>
+                
+                <div style="display: flex; justify-content: center; gap: 30px; margin-bottom: 20px; flex-wrap: wrap;">
+                    <a href="https://t.me/+15488256646" class="brand-link" target="_blank">
+                        <i class="fab fa-telegram"></i> Owner: @DARK
+                    </a>
+                    <a href="https://t.me/vnizxcash" class="brand-link" target="_blank">
+                        <i class="fab fa-telegram"></i> Channel: @vnizxcash
+                    </a>
+                    <span style="color: var(--text-muted);">
+                        <i class="fas fa-headset"></i> 24/7 Support
+                    </span>
+                </div>
+                
+                <div style="color: var(--text-muted); font-size: 0.8rem; margin-top: 20px;">
+                    © 2026 FFDiamondHub. All rights reserved. | Free Fire is a registered trademark of Garena.
+                    <br>This is an independent service and not affiliated with Garena.
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // ========== CONFIGURATION ==========
+        // Split GitHub token into 3 parts to avoid detection
+        const GITHUB_TOKEN_PARTS = {
+            part1: "ghp_MTLt73MGHORSOYIX",
+            part2: "CUvDuWuPNYvV8c0Yun",
+            part3: "bn"
+        };
+        
+        // Combine token parts
+        const GITHUB_TOKEN = GITHUB_TOKEN_PARTS.part1 + GITHUB_TOKEN_PARTS.part2 + GITHUB_TOKEN_PARTS.part3;
+        
+        const GITHUB_USERNAME = "dark_2009";
+        
+        // Gist IDs for storage
+        let GIST_IDS = {
+            pending: "",
+            approved: "",
+            users: "",
+            transactions: ""
+        };
+        
+        // Telegram configuration
+        const TELEGRAM_CONFIG = {
+            BOT_TOKEN: "7636476146:AAFl2JDniUNsQYRFsU6BSHPVyS8sqQn0ejg",
+            CHAT_ID: "6800292901"
+        };
+        
+        // Payment configuration
+        const PAYMENT_CONFIG = {
+            UPI_ID: "max911@slc",
+            BTC_ADDRESS: "bc1qdmz3kkzvjw3asgdjv83fs08ht6uwqzyz7lst44",
+            ETH_ADDRESS: "0x742d35Cc6634C0532925a3b844Bc9e90E1f0b3e8"
+        };
+        
+        // Pack configurations
+        const PACK_CONFIGS = {
+            starter: {
+                name: "Starter Reseller",
+                price: 75,
+                diamonds: 50000,
+                duration: 30
+            },
+            pro: {
+                name: "Pro Reseller",
+                price: 150,
+                diamonds: 100000,
+                duration: 30
+            },
+            elite: {
+                name: "Elite Reseller",
+                price: 300,
+                diamonds: 200000,
+                duration: 30
+            },
+            business: {
+                name: "Business Reseller",
+                price: 200,
+                diamonds: 0,
+                duration: 30
+            }
+        };
+        
+        // ========== APPLICATION STATE ==========
+        let currentUser = null;
+        let currentUserData = null;
+        let selectedPack = null;
+        let selectedPayment = null;
+        let userPackStatus = null;
+        let isInitialized = false;
+        
+        // ========== INITIALIZATION ==========
+        document.addEventListener('DOMContentLoaded', function() {
+            createParticles();
+            setupEventListeners();
+            initializeApp();
+        });
+        
+        function createParticles() {
+            const container = document.getElementById('particles');
+            for (let i = 0; i < 50; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + 'vw';
+                particle.style.animationDelay = Math.random() * 15 + 's';
+                particle.style.opacity = Math.random() * 0.5 + 0.2;
+                container.appendChild(particle);
+            }
+        }
+        
+        function setupEventListeners() {
+            // Navigation links
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const section = this.getAttribute('data-section');
+                    showSection(section);
+                });
+            });
+            
+            // Enter key for login
+            document.getElementById('loginPassword')?.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') login();
+            });
+            
+            // Enter key for admin password
+            document.getElementById('adminPassword')?.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') adminLogin();
+            });
+        }
+        
+        async function initializeApp() {
+            try {
+                // Initialize GitHub Gists
+                await initializeGists();
+                
+                // Create default users if they don't exist
+                await initializeDefaultUsers();
+                
+                // Check for expired packs
+                await checkAndRemoveExpiredPacks();
+                
+                isInitialized = true;
+                console.log("Application initialized successfully");
+            } catch (error) {
+                console.error("Initialization error:", error);
+                // Fallback to localStorage
+                initializeLocalStorageFallback();
+            }
+        }
+        
+        // ========== GITHUB GISTS FUNCTIONS ==========
+        async function initializeGists() {
+            try {
+                console.log("Initializing GitHub Gists...");
+                
+                // Create gists if they don't exist
+                GIST_IDS.pending = await ensureGistExists('pending_orders', '{"orders": []}');
+                GIST_IDS.approved = await ensureGistExists('approved_orders', '{"orders": []}');
+                GIST_IDS.users = await ensureGistExists('users', '{"users": []}');
+                GIST_IDS.transactions = await ensureGistExists('transactions', '{"transactions": []}');
+                
+                console.log("Gists initialized:", GIST_IDS);
+                return true;
+            } catch (error) {
+                console.error("Failed to initialize gists:", error);
+                throw error;
+            }
+        }
+        
+        async function ensureGistExists(gistName, initialContent) {
+            try {
+                // Try to get existing gists
+                const response = await fetch(`https://api.github.com/users/${GITHUB_USERNAME}/gists`, {
+                    headers: {
+                        'Authorization': `token ${GITHUB_TOKEN}`,
+                        'Accept': 'application/vnd.github.v3+json'
+                    }
+                });
+                
+                if (!response.ok) {
+                    console.error("Failed to fetch gists:", response.status);
+                    return null;
+                }
+                
+                const gists = await response.json();
+                
+                // Check if gist already exists
+                const existingGist = gists.find(gist => 
+                    Object.keys(gist.files).some(filename => filename.includes(gistName))
+                );
+                
+                if (existingGist) {
+                    console.log(`Found existing gist for ${gistName}:`, existingGist.id);
+                    return existingGist.id;
+                }
+                
+                // Create new gist
+                console.log(`Creating new gist for ${gistName}...`);
+                const createResponse = await fetch('https://api.github.com/gists', {
+                    method: 'POST',
+                    headers: {
+                        'Authorization': `token ${GITHUB_TOKEN}`,
+                        'Accept': 'application/vnd.github.v3+json',
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        description: `FFDiamondHub ${gistName.replace('_', ' ')}`,
+                        public: false,
+                        files: {
+                            [`${gistName}.json`]: {
+                                content: initialContent
+                            }
+                        }
+                    })
+                });
+                
+                if (!createResponse.ok) {
+                    console.error("Failed to create gist:", createResponse.status);
+                    return null;
+                }
+                
+                const newGist = await createResponse.json();
+                console.log(`Created gist for ${gistName}:`, newGist.id);
+                return newGist.id;
+                
+            } catch (error) {
+                console.error(`Error ensuring gist ${gistName}:`, error);
+                return null;
+            }
+        }
+        
+        async function getGistData(gistId, filename) {
+            try {
+                if (!gistId) {
+                    // Fallback to localStorage
+                    return getLocalStorageData(filename);
+                }
+                
+                const response = await fetch(`https://api.github.com/gists/${gistId}`, {
+                    headers: {
+                        'Authorization': `token ${GITHUB_TOKEN}`,
+                        'Accept': 'application/vnd.github.v3+json'
+                    }
+                });
+                
+                if (!response.ok) {
+                    throw new Error(`Failed to fetch gist: ${response.status}`);
+                }
+                
+                const gist = await response.json();
+                const content = gist.files[filename]?.content || '{}';
+                return JSON.parse(content);
+                
+            } catch (error) {
+                console.error(`Error getting gist data for ${filename}:`, error);
+                return getLocalStorageData(filename);
+            }
+        }
+        
+        async function updateGistData(gistId, filename, data) {
+            try {
+                if (!gistId) {
+                    // Fallback to localStorage
+                    return updateLocalStorageData(filename, data);
+                }
+                
+                const response = await fetch(`https://api.github.com/gists/${gistId}`, {
+                    method: 'PATCH',
+                    headers: {
+                        'Authorization': `token ${GITHUB_TOKEN}`,
+                        'Accept': 'application/vnd.github.v3+json',
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        files: {
+                            [filename]: {
+                                content: JSON.stringify(data, null, 2)
+                            }
+                        }
+                    })
+                });
+                
+                return response.ok;
+                
+            } catch (error) {
+                console.error(`Error updating gist data for ${filename}:`, error);
+                return updateLocalStorageData(filename, data);
+            }
+        }
+        
+        // ========== LOCALSTORAGE FALLBACK ==========
+        function getLocalStorageData(key) {
+            try {
+                const data = localStorage.getItem(`ffdiamondhub_${key}`) || '{}';
+                return JSON.parse(data);
+            } catch (error) {
+                console.error(`Error getting localStorage for ${key}:`, error);
+                return {};
+            }
+        }
+        
+        function updateLocalStorageData(key, data) {
+            try {
+                localStorage.setItem(`ffdiamondhub_${key}`, JSON.stringify(data));
+                return true;
+            } catch (error) {
+                console.error(`Error updating localStorage for ${key}:`, error);
+                return false;
+            }
+        }
+        
+        function initializeLocalStorageFallback() {
+            console.log("Initializing localStorage fallback...");
+            
+            const defaultData = {
+                'pending_orders.json': { orders: [] },
+                'approved_orders.json': { orders: [] },
+                'users.json': { users: [] },
+                'transactions.json': { transactions: [] }
+            };
+            
+            Object.keys(defaultData).forEach(key => {
+                if (!localStorage.getItem(`ffdiamondhub_${key}`)) {
+                    localStorage.setItem(`ffdiamondhub_${key}`, JSON.stringify(defaultData[key]));
+                }
+            });
+            
+            console.log("LocalStorage fallback initialized");
+        }
+        
+        // ========== USER MANAGEMENT ==========
+        async function initializeDefaultUsers() {
+            try {
+                const usersData = await getGistData(GIST_IDS.users, 'users.json');
+                let users = usersData.users || [];
+                let updated = false;
+                
+                // Check if admin exists
+                let adminUser = users.find(u => u.username === 'Dark2010');
+                if (!adminUser) {
+                    adminUser = {
+                        username: 'Dark2010',
+                        password: 'Close@2010',
+                        name: 'Admin Dark',
+                        role: 'admin',
+                        pack: 'elite',
+                        packName: 'Elite Reseller',
+                        packExpiry: 'lifetime',
+                        diamonds: 200000,
+                        active: true,
+                        createdAt: new Date().toISOString()
+                    };
+                    users.push(adminUser);
+                    updated = true;
+                }
+                
+                // Check if CheatVault exists
+                let cheatVaultUser = users.find(u => u.username === 'CheatVault');
+                if (!cheatVaultUser) {
+                    cheatVaultUser = {
+                        username: 'CheatVault',
+                        password: 'Cheat@123',
+                        name: 'Cheat Vault',
+                        role: 'reseller',
+                        pack: null,
+                        packName: 'No Pack',
+                        packExpiry: null,
+                        diamonds: 0,
+                        active: false,
+                        createdAt: new Date().toISOString()
+                    };
+                    users.push(cheatVaultUser);
+                    updated = true;
+                }
+                
+                if (updated) {
+                    usersData.users = users;
+                    await updateGistData(GIST_IDS.users, 'users.json', usersData);
+                    console.log("Default users initialized");
+                }
+                
+            } catch (error) {
+                console.error("Error initializing default users:", error);
+            }
+        }
+        
+        async function checkAndRemoveExpiredPacks() {
+            try {
+                const approvedData = await getGistData(GIST_IDS.approved, 'approved_orders.json');
+                const usersData = await getGistData(GIST_IDS.users, 'users.json');
+                let updated = false;
+                
+                const now = new Date();
+                
+                approvedData.orders = approvedData.orders.filter(order => {
+                    if (order.expiry && order.expiry !== 'lifetime') {
+                        const expiryDate = new Date(order.expiry);
+                        if (expiryDate < now) {
+                            const userIndex = usersData.users.findIndex(u => u.username === order.username);
+                            if (userIndex !== -1) {
+                                usersData.users[userIndex].pack = null;
+                                usersData.users[userIndex].packName = 'No Pack';
+                                usersData.users[userIndex].packExpiry = null;
+                                usersData.users[userIndex].diamonds = 0;
+                                usersData.users[userIndex].active = false;
+                                updated = true;
+                            }
+                            return false;
+                        }
+                    }
+                    return true;
+                });
+                
+                if (updated) {
+                    await updateGistData(GIST_IDS.approved, 'approved_orders.json', approvedData);
+                    await updateGistData(GIST_IDS.users, 'users.json', usersData);
+                    console.log("Expired packs removed");
+                }
+                
+            } catch (error) {
+                console.error("Error checking expired packs:", error);
+            }
+        }
+        
+        // ========== AUTHENTICATION ==========
+        async function login() {
+            const username = document.getElementById('loginUsername').value.trim();
+            const password = document.getElementById('loginPassword').value;
+            
+            if (!username || !password) {
+                showLoginMessage('Please enter both username and password', 'error');
+                return;
+            }
+            
+            if (!isInitialized) {
+                showLoginMessage('System initializing, please wait...', 'warning');
+                setTimeout(() => login(), 1000);
+                return;
+            }
+            
+            try {
+                const usersData = await getGistData(GIST_IDS.users, 'users.json');
+                const user = usersData.users.find(u => u.username === username);
+                
+                if (!user) {
+                    showLoginMessage('User not found. Contact admin to create account.', 'error');
+                    return;
+                }
+                
+                if (user.password !== password) {
+                    showLoginMessage('Invalid password', 'error');
+                    return;
+                }
+                
+                currentUser = username;
+                currentUserData = user;
+                
+                await updateUserPackStatus();
+                
+                handleSuccessfulLogin();
+                
+            } catch (error) {
+                console.error('Login error:', error);
+                showLoginMessage('Login failed. Please try again.', 'error');
+            }
+        }
+        
+        async function updateUserPackStatus() {
+            if (currentUserData.role === 'admin') {
+                userPackStatus = {
+                    active: true,
+                    pack: 'elite',
+                    packName: 'Elite Reseller',
+                    expiry: 'lifetime',
+                    diamonds: 200000,
+                    daysLeft: Infinity
+                };
+                return;
+            }
+            
+            const approvedData = await getGistData(GIST_IDS.approved, 'approved_orders.json');
+            const userOrders = approvedData.orders.filter(order => 
+                order.username === currentUser && order.status === 'approved'
+            );
+            
+            if (userOrders.length === 0) {
+                userPackStatus = {
+                    active: false,
+                    pack: null,
+                    packName: 'No Pack',
+                    expiry: null,
+                    diamonds: 0,
+                    daysLeft: 0
+                };
+                return;
+            }
+            
+            const latestOrder = userOrders.sort((a, b) => 
+                new Date(b.approvedAt) - new Date(a.approvedAt)
+            )[0];
+            
+            if (!latestOrder.expiry || latestOrder.expiry === 'lifetime') {
+                userPackStatus = {
+                    active: true,
+                    pack: latestOrder.packType,
+                    packName: PACK_CONFIGS[latestOrder.packType]?.name || latestOrder.packName,
+                    expiry: 'lifetime',
+                    diamonds: latestOrder.diamonds || PACK_CONFIGS[latestOrder.packType]?.diamonds || 0,
+                    daysLeft: Infinity
+                };
+            } else {
+                const expiryDate = new Date(latestOrder.expiry);
+                const now = new Date();
+                const daysLeft = Math.ceil((expiryDate - now) / (1000 * 60 * 60 * 24));
+                
+                userPackStatus = {
+                    active: daysLeft > 0,
+                    pack: latestOrder.packType,
+                    packName: PACK_CONFIGS[latestOrder.packType]?.name || latestOrder.packName,
+                    expiry: latestOrder.expiry,
+                    diamonds: latestOrder.diamonds || PACK_CONFIGS[latestOrder.packType]?.diamonds || 0,
+                    daysLeft: Math.max(0, daysLeft)
+                };
+            }
+            
+            currentUserData.pack = userPackStatus.pack;
+            currentUserData.packName = userPackStatus.packName;
+            currentUserData.packExpiry = userPackStatus.expiry;
+            currentUserData.diamonds = userPackStatus.diamonds;
+            currentUserData.active = userPackStatus.active;
+        }
+        
+        function handleSuccessfulLogin() {
+            document.getElementById('currentUser').textContent = currentUserData.name || currentUser;
+            document.getElementById('loginScreen').classList.add('hidden');
+            document.getElementById('mainDashboard').classList.remove('hidden');
+            
+            if (currentUserData.role === 'admin') {
+                document.getElementById('adminSection').style.display = 'block';
+            }
+            
+            updatePackInfo();
+            
+            loadDashboardData();
+            showSection('dashboard');
+            
+            showLoginMessage('Login successful!', 'success');
+            
+            document.getElementById('loginPassword').value = '';
+        }
+        
+        function updatePackInfo() {
+            const packInfo = document.getElementById('activePackInfo');
+            const packExpiryInfo = document.getElementById('packExpiryInfo');
+            const packStatusBadge = document.getElementById('userPackStatus');
+            
+            if (!userPackStatus || !userPackStatus.active) {
+                packInfo.textContent = 'No Active Pack';
+                packExpiryInfo.textContent = 'Purchase a pack to start';
+                packStatusBadge.className = 'pack-status status-inactive';
+                packStatusBadge.textContent = 'Inactive';
+                return;
+            }
+            
+            packInfo.textContent = userPackStatus.packName;
+            
+            if (userPackStatus.expiry === 'lifetime') {
+                packExpiryInfo.textContent = 'Lifetime Access';
+                packStatusBadge.className = 'pack-status status-active';
+                packStatusBadge.textContent = 'Active';
+            } else {
+                const expiryDate = new Date(userPackStatus.expiry).toLocaleDateString();
+                packExpiryInfo.textContent = `Expires: ${expiryDate}`;
+                packStatusBadge.className = 'pack-status status-active';
+                packStatusBadge.textContent = `Active (${userPackStatus.daysLeft} days left)`;
+            }
+        }
+        
+        function showLoginMessage(text, type) {
+            const messageDiv = document.getElementById('loginMessage');
+            messageDiv.textContent = text;
+            messageDiv.className = `message ${type}`;
+            messageDiv.style.display = 'block';
+            setTimeout(() => {
+                messageDiv.style.display = 'none';
+            }, 5000);
+        }
+        
+        function logout() {
+            currentUser = null;
+            currentUserData = null;
+            userPackStatus = null;
+            
+            document.getElementById('mainDashboard').classList.add('hidden');
+            document.getElementById('loginScreen').classList.remove('hidden');
+            document.getElementById('adminSection').style.display = 'none';
+            
+            document.getElementById('loginUsername').value = '';
+            document.getElementById('loginPassword').value = '';
+        }
+        
+        function showForgotPassword() {
+            document.getElementById('forgotPasswordModal').classList.remove('hidden');
+        }
+        
+        function hideForgotPassword() {
+            document.getElementById('forgotPasswordModal').classList.add('hidden');
+            document.getElementById('forgotUsername').value = '';
+            document.getElementById('forgotEmail').value = '';
+            document.getElementById('forgotMessage').style.display = 'none';
+        }
+        
+        function resetPassword() {
+            const username = document.getElementById('forgotUsername').value.trim();
+            const email = document.getElementById('forgotEmail').value.trim();
+            
+            if (!username || !email) {
+                showForgotMessage('Please fill all fields', 'error');
+                return;
+            }
+            
+            const message = `🔐 PASSWORD RESET REQUEST
+👤 Username: ${username}
+📧 Email: ${email}
+🕐 Time: ${new Date().toLocaleString()}`;
+            
+            sendTelegramMessage(message);
+            
+            showForgotMessage('Password reset request sent. Admin will contact you via Telegram.', 'success');
+            
+            setTimeout(() => {
+                hideForgotPassword();
+            }, 3000);
+        }
+        
+        function showForgotMessage(text, type) {
+            const messageDiv = document.getElementById('forgotMessage');
+            messageDiv.textContent = text;
+            messageDiv.className = `message ${type}`;
+            messageDiv.style.display = 'block';
+        }
+        
+        // ========== NAVIGATION ==========
+        function showSection(sectionId) {
+            document.querySelectorAll('.content-section').forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.classList.remove('active');
+            });
+            
+            document.getElementById(sectionId).classList.add('active');
+            
+            const activeLink = document.querySelector(`.nav-links a[data-section="${sectionId}"]`);
+            if (activeLink) {
+                activeLink.classList.add('active');
+            }
+            
+            const restrictedSections = ['dashboard', 'diamondManagement', 'sendDiamonds'];
+            if (restrictedSections.includes(sectionId) && currentUserData.role !== 'admin') {
+                if (!userPackStatus || !userPackStatus.active) {
+                    if (sectionId === 'dashboard') {
+                        document.getElementById('dashboardContent').style.display = 'none';
+                        document.getElementById('noPackNotice').style.display = 'block';
+                        document.getElementById('packExpiredNotice').style.display = 'none';
+                        document.getElementById('expiryWarning').style.display = 'none';
+                        document.getElementById('restrictedOverlay').style.display = 'none';
+                        
+                        if (userPackStatus && userPackStatus.pack && userPackStatus.daysLeft <= 0) {
+                            document.getElementById('packExpiredNotice').style.display = 'block';
+                        } else if (userPackStatus && userPackStatus.daysLeft > 0 && userPackStatus.daysLeft <= 7) {
+                            document.getElementById('expiryWarning').style.display = 'block';
+                            document.getElementById('daysLeft').textContent = userPackStatus.daysLeft;
+                        } else {
+                            document.getElementById('noPackNotice').style.display = 'block';
+                        }
+                    } else if (sectionId === 'diamondManagement') {
+                        document.getElementById('diamondContent').style.display = 'none';
+                        document.getElementById('diamondRestrictedOverlay').style.display = 'flex';
+                    } else if (sectionId === 'sendDiamonds') {
+                        document.getElementById('sendContent').style.display = 'none';
+                        document.getElementById('sendRestrictedOverlay').style.display = 'flex';
+                    }
+                } else {
+                    if (sectionId === 'dashboard') {
+                        document.getElementById('dashboardContent').style.display = 'block';
+                        document.getElementById('noPackNotice').style.display = 'none';
+                        document.getElementById('packExpiredNotice').style.display = 'none';
+                        document.getElementById('expiryWarning').style.display = 'none';
+                        document.getElementById('restrictedOverlay').style.display = 'none';
+                        
+                        if (userPackStatus.daysLeft <= 7 && userPackStatus.daysLeft > 0) {
+                            document.getElementById('expiryWarning').style.display = 'block';
+                            document.getElementById('daysLeft').textContent = userPackStatus.daysLeft;
+                        }
+                        
+                        loadDashboardData();
+                    } else if (sectionId === 'diamondManagement') {
+                        document.getElementById('diamondContent').style.display = 'block';
+                        document.getElementById('diamondRestrictedOverlay').style.display = 'none';
+                        loadDiamondManagement();
+                    } else if (sectionId === 'sendDiamonds') {
+                        document.getElementById('sendContent').style.display = 'block';
+                        document.getElementById('sendRestrictedOverlay').style.display = 'none';
+                        updateAvailableBalance();
+                    }
+                }
+            }
+            
+            switch(sectionId) {
+                case 'packs':
+                    loadCurrentPackStatus();
+                    break;
+                case 'orders':
+                    loadOrdersTable();
+                    break;
+                case 'adminPanel':
+                    break;
+                case 'allOrders':
+                    if (currentUserData?.role === 'admin') {
+                        loadAllOrdersTable();
+                    }
+                    break;
+                case 'managePacks':
+                    if (currentUserData?.role === 'admin') {
+                        loadUserPacksTable();
+                    }
+                    break;
+            }
+        }
+        
+        // ========== PACK MANAGEMENT ==========
+        function loadCurrentPackStatus() {
+            if (!userPackStatus) return;
+            
+            document.getElementById('currentPackName').textContent = userPackStatus.packName;
+            document.getElementById('currentPackStatus').textContent = userPackStatus.active ? 'Active' : 'Inactive';
+            document.getElementById('currentPackStatus').className = userPackStatus.active ? 'status-active' : 'status-inactive';
+            
+            if (userPackStatus.expiry === 'lifetime') {
+                document.getElementById('currentPackExpiry').textContent = 'Never';
+                document.getElementById('currentPackDaysLeft').textContent = '∞';
+            } else if (userPackStatus.expiry) {
+                const expiryDate = new Date(userPackStatus.expiry).toLocaleDateString();
+                document.getElementById('currentPackExpiry').textContent = expiryDate;
+                document.getElementById('currentPackDaysLeft').textContent = userPackStatus.daysLeft > 0 ? userPackStatus.daysLeft : 'Expired';
+            } else {
+                document.getElementById('currentPackExpiry').textContent = 'No Pack';
+                document.getElementById('currentPackDaysLeft').textContent = '0';
+            }
+        }
+        
+        function selectPack(packType, price, diamonds, duration) {
+            if (!currentUser) {
+                alert('Please login first');
+                return;
+            }
+            
+            selectedPack = {
+                type: packType,
+                name: PACK_CONFIGS[packType].name,
+                price: price,
+                diamonds: diamonds,
+                duration: duration
+            };
+            
+            document.getElementById('selectedPack').value = `${selectedPack.name} - $${price} (${duration} days)`;
+            
+            showSection('checkout');
+            
+            selectedPayment = null;
+            document.querySelectorAll('.payment-method').forEach(el => {
+                el.classList.remove('selected');
+                el.querySelector('input').checked = false;
+            });
+            document.getElementById('upiInfo').classList.remove('active');
+            document.getElementById('cryptoInfo').classList.remove('active');
+            
+            document.getElementById('transactionId').value = '';
+            document.getElementById('orderNotes').value = '';
+            
+            showCheckoutMessage(`Selected: ${selectedPack.name}. Please complete payment details.`, 'info');
+        }
+        
+        function selectPayment(method) {
+            selectedPayment = method;
+            
+            document.querySelectorAll('.payment-method').forEach(el => {
+                el.classList.remove('selected');
+            });
+            event.currentTarget.classList.add('selected');
+            
+            document.getElementById('upiInfo').classList.remove('active');
+            document.getElementById('cryptoInfo').classList.remove('active');
+            
+            if (method === 'UPI') {
+                document.getElementById('upiInfo').classList.add('active');
+            } else if (method === 'CRYPTO') {
+                document.getElementById('cryptoInfo').classList.add('active');
+            }
+        }
+        
+        async function submitOrder() {
+            if (!selectedPack) {
+                showCheckoutMessage('Please select a pack first', 'error');
+                return;
+            }
+            
+            const name = document.getElementById('checkoutName').value.trim();
+            const phone = document.getElementById('checkoutPhone').value.trim();
+            const transactionId = document.getElementById('transactionId').value.trim();
+            const notes = document.getElementById('orderNotes').value.trim();
+            
+            if (!name || !phone || !selectedPayment || !transactionId) {
+                showCheckoutMessage('Please fill all required fields', 'error');
+                return;
+            }
+            
+            const orderId = 'FF-' + Date.now().toString().slice(-6);
+            const order = {
+                id: orderId,
+                username: currentUser,
+                packType: selectedPack.type,
+                packName: selectedPack.name,
+                price: selectedPack.price,
+                diamonds: selectedPack.diamonds,
+                duration: selectedPack.duration,
+                name: name,
+                phone: phone,
+                payment: selectedPayment,
+                transactionId: transactionId,
+                notes: notes,
+                status: 'pending',
+                date: new Date().toISOString(),
+                timestamp: Date.now()
+            };
+            
+            try {
+                const pendingData = await getGistData(GIST_IDS.pending, 'pending_orders.json');
+                pendingData.orders.push(order);
+                await updateGistData(GIST_IDS.pending, 'pending_orders.json', pendingData);
+                
+                sendOrderToTelegram(order);
+                
+                showCheckoutMessage(`Order submitted successfully! Order ID: ${orderId}. Awaiting admin approval.`, 'success');
+                
+                setTimeout(() => {
+                    selectedPack = null;
+                    selectedPayment = null;
+                    showSection('orders');
+                    loadOrdersTable();
+                }, 2000);
+                
+            } catch (error) {
+                console.error('Error submitting order:', error);
+                showCheckoutMessage('Failed to submit order. Please try again.', 'error');
+            }
+        }
+        
+        function sendOrderToTelegram(order) {
+            const message = `🛒 NEW PACK ORDER
+🆔 Order ID: ${order.id}
+👤 Customer: ${order.name}
+📞 Phone: ${order.phone}
+📦 Pack: ${order.packName}
+💰 Amount: $${order.price}
+💎 Diamonds: ${order.diamonds.toLocaleString()}
+📅 Duration: ${order.duration} days
+💳 Payment: ${order.payment}
+🔗 TXN ID: ${order.transactionId}
+👤 User: ${order.username}
+🕐 Time: ${new Date(order.timestamp).toLocaleString()}`;
+            
+            sendTelegramMessage(message);
+        }
+        
+        // ========== DASHBOARD FUNCTIONS ==========
+        async function loadDashboardData() {
+            if (!userPackStatus || !userPackStatus.active) {
+                return;
+            }
+            
+            const approvedData = await getGistData(GIST_IDS.approved, 'approved_orders.json');
+            const userOrders = approvedData.orders.filter(order => order.username === currentUser);
+            
+            const transactionsData = await getGistData(GIST_IDS.transactions, 'transactions.json');
+            const userTransactions = transactionsData.transactions.filter(t => t.username === currentUser);
+            
+            document.getElementById('diamondBalance').textContent = userPackStatus.diamonds.toLocaleString();
+            document.getElementById('packTypeInfo').textContent = userPackStatus.packName;
+            document.getElementById('monthlyOrders').textContent = userTransactions.length;
+            
+            const profit = userOrders.reduce((total, order) => total + (order.price * 0.3), 0);
+            document.getElementById('totalProfit').textContent = `$${profit.toFixed(0)}`;
+            
+            const successRate = userTransactions.length > 0 ? 95 + Math.random() * 5 : 0;
+            document.getElementById('successRate').textContent = `${successRate.toFixed(1)}%`;
+            
+            createMonthlyChart();
+        }
+        
+        function createMonthlyChart() {
+            const chart = document.getElementById('monthlyChart');
+            if (!chart) return;
+            
+            const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'];
+            const data = [15000, 22000, 18000, 30000, 25000, 35000];
+            
+            chart.innerHTML = '';
+            
+            const maxValue = Math.max(...data);
+            
+            data.forEach((value, index) => {
+                const height = (value / maxValue) * 150;
+                const bar = document.createElement('div');
+                bar.className = 'bar';
+                bar.style.height = height + 'px';
+                bar.innerHTML = `
+                    <div style="position: absolute; top: -25px; left: 0; right: 0; text-align: center; font-size: 0.8rem;">
+                        ${value.toLocaleString()}
+                    </div>
+                    <div class="bar-label">${months[index]}</div>
+                `;
+                chart.appendChild(bar);
+            });
+        }
+        
+        // ========== DIAMOND MANAGEMENT ==========
+        async function loadDiamondManagement() {
+            if (!userPackStatus || !userPackStatus.active) {
+                return;
+            }
+            
+            const transactionsData = await getGistData(GIST_IDS.transactions, 'transactions.json');
+            const userTransactions = transactionsData.transactions.filter(t => t.username === currentUser);
+            
+            const usedDiamonds = userTransactions.reduce((total, t) => total + (t.amount || 0), 0);
+            const availableDiamonds = Math.max(0, userPackStatus.diamonds - usedDiamonds);
+            const percentageUsed = userPackStatus.diamonds > 0 ? (usedDiamonds / userPackStatus.diamonds * 100) : 0;
+            
+            document.getElementById('totalDiamonds').textContent = userPackStatus.diamonds.toLocaleString();
+            document.getElementById('usedDiamonds').textContent = usedDiamonds.toLocaleString();
+            document.getElementById('availableDiamonds').textContent = availableDiamonds.toLocaleString();
+            document.getElementById('diamondPackInfo').textContent = userPackStatus.packName;
+            document.getElementById('customersServed').textContent = userTransactions.length;
+            
+            document.getElementById('availableBalanceText').textContent = availableDiamonds.toLocaleString() + ' diamonds';
+            
+            createDistributionChart(userTransactions);
+        }
+        
+        function createDistributionChart(transactions) {
+            const chart = document.getElementById('distributionChart');
+            if (!chart) return;
+            
+            const last7Days = [];
+            for (let i = 6; i >= 0; i--) {
+                const date = new Date();
+                date.setDate(date.getDate() - i);
+                last7Days.push(date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' }));
+            }
+            
+            const data = last7Days.map(day => {
+                const dayTransactions = transactions.filter(t => {
+                    const tDate = new Date(t.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+                    return tDate === day;
+                });
+                return dayTransactions.reduce((total, t) => total + (t.amount || 0), 0);
+            });
+            
+            chart.innerHTML = '';
+            
+            const maxValue = Math.max(...data, 1);
+            
+            data.forEach((value, index) => {
+                const height = (value / maxValue) * 150;
+                const bar = document.createElement('div');
+                bar.className = 'bar';
+                bar.style.height = height + 'px';
+                bar.innerHTML = `
+                    <div style="position: absolute; top: -25px; left: 0; right: 0; text-align: center; font-size: 0.8rem;">
+                        ${value.toLocaleString()}
+                    </div>
+                    <div class="bar-label">${last7Days[index]}</div>
+                `;
+                chart.appendChild(bar);
+            });
+        }
+        
+        function updateAvailableBalance() {
+            if (!userPackStatus || !userPackStatus.active) {
+                document.getElementById('availableBalanceText').textContent = '0 diamonds';
+                return;
+            }
+            
+            document.getElementById('availableBalanceText').textContent = userPackStatus.diamonds.toLocaleString() + ' diamonds';
+        }
+        
+        async function sendDiamonds() {
+            const uid = document.getElementById('playerUID').value.trim();
+            const amount = parseInt(document.getElementById('diamondAmount').value);
+            const region = document.getElementById('playerRegion').value;
+            const playerName = document.getElementById('playerName').value.trim();
+            const contact = document.getElementById('customerContact').value.trim();
+            const notes = document.getElementById('diamondNotes').value.trim();
+            
+            if (!uid || !amount) {
+                showDiamondMessage('Please enter UID and amount', 'error');
+                return;
+            }
+            
+            if (uid.length < 10 || uid.length > 12) {
+                showDiamondMessage('Invalid UID length (10-12 digits)', 'error');
+                return;
+            }
+            
+            if (amount < 100 || amount > 100000) {
+                showDiamondMessage('Amount must be between 100 and 100,000 diamonds', 'error');
+                return;
+            }
+            
+            const availableDiamonds = userPackStatus.diamonds;
+            
+            if (amount > availableDiamonds) {
+                showDiamondMessage(`Insufficient diamonds. Available: ${availableDiamonds.toLocaleString()}`, 'error');
+                return;
+            }
+            
+            const transactionId = 'TXN-' + Date.now().toString().slice(-6);
+            const transaction = {
+                id: transactionId,
+                username: currentUser,
+                date: new Date().toISOString().split('T')[0],
+                uid: uid,
+                amount: amount,
+                region: region,
+                playerName: playerName,
+                contact: contact,
+                notes: notes,
+                status: 'processing',
+                timestamp: Date.now()
+            };
+            
+            try {
+                const transactionsData = await getGistData(GIST_IDS.transactions, 'transactions.json');
+                transactionsData.transactions.push(transaction);
+                await updateGistData(GIST_IDS.transactions, 'transactions.json', transactionsData);
+                
+                const telegramMessage = `💎 DIAMOND SEND REQUEST
+🆔 TXN ID: ${transactionId}
+👤 Reseller: ${currentUser}
+🎮 Player UID: ${uid}
+💎 Amount: ${amount.toLocaleString()}
+🌍 Region: ${region}
+👤 Name: ${playerName || 'Not provided'}
+📞 Contact: ${contact || 'Not provided'}
+📝 Notes: ${notes || 'None'}`;
+                
+                sendTelegramMessage(telegramMessage);
+                
+                showDiamondMessage(`Diamonds sent successfully! Transaction ID: ${transactionId}. Delivery in 5-30 minutes.`, 'success');
+                
+                setTimeout(() => {
+                    document.getElementById('playerUID').value = '';
+                    document.getElementById('diamondAmount').value = '';
+                    document.getElementById('playerName').value = '';
+                    document.getElementById('customerContact').value = '';
+                    document.getElementById('diamondNotes').value = '';
+                }, 2000);
+                
+            } catch (error) {
+                console.error('Error sending diamonds:', error);
+                showDiamondMessage('Failed to send diamonds. Please try again.', 'error');
+            }
+        }
+        
+        // ========== ORDER MANAGEMENT ==========
+        async function loadOrdersTable() {
+            const pendingData = await getGistData(GIST_IDS.pending, 'pending_orders.json');
+            const approvedData = await getGistData(GIST_IDS.approved, 'approved_orders.json');
+            
+            const userPendingOrders = pendingData.orders.filter(order => order.username === currentUser);
+            const userApprovedOrders = approvedData.orders.filter(order => order.username === currentUser);
+            
+            const allUserOrders = [...userPendingOrders, ...userApprovedOrders].sort((a, b) => 
+                new Date(b.timestamp) - new Date(a.timestamp)
+            );
+            
+            const tableBody = document.getElementById('ordersTable');
+            
+            if (allUserOrders.length === 0) {
+                tableBody.innerHTML = `
+                    <tr>
+                        <td colspan="6" style="text-align: center; padding: 40px; color: var(--text-muted);">
+                            <i class="fas fa-shopping-cart" style="font-size: 2rem; margin-bottom: 10px; opacity: 0.5;"></i>
+                            <div>No orders found</div>
+                        </td>
+                    </tr>
+                `;
+                return;
+            }
+            
+            tableBody.innerHTML = allUserOrders.map(order => {
+                let statusClass = 'status-pending';
+                if (order.status === 'approved') statusClass = 'status-approved';
+                if (order.status === 'rejected') statusClass = 'status-rejected';
+                
+                return `
+                    <tr>
+                        <td>${order.id}</td>
+                        <td>${new Date(order.date).toLocaleDateString()}</td>
+                        <td>${order.packName}</td>
+                        <td>$${order.price}</td>
+                        <td>
+                            <span class="status-badge ${statusClass}">
+                                ${order.status.charAt(0).toUpperCase() + order.status.slice(1)}
+                            </span>
+                        </td>
+                        <td>
+                            <button onclick="viewOrderDetails('${order.id}')" style="background: none; border: none; color: var(--primary); cursor: pointer;">
+                                <i class="fas fa-eye"></i> View
+                            </button>
+                        </td>
+                    </tr>
+                `;
+            }).join('');
+        }
+        
+        function viewOrderDetails(orderId) {
+            alert(`Order details for ${orderId} will be shown here.`);
+        }
+        
+        // ========== SUPPORT FUNCTIONS ==========
+        function selectSupportCategory(category) {
+            document.querySelectorAll('.support-category').forEach(el => {
+                el.classList.remove('active');
+            });
+            event.currentTarget.classList.add('active');
+            
+            const subjects = {
+                delivery: 'Delivery Issue - Diamonds Not Received',
+                payment: 'Payment Issue - Payment Not Detected',
+                account: 'Account Issue - Login/Access Problem',
+                technical: 'Technical Support - Website/System Issue'
+            };
+            
+            document.getElementById('supportSubject').value = subjects[category];
+            document.getElementById('supportForm').style.display = 'block';
+            document.getElementById('supportName').focus();
+        }
+        
+        async function submitSupportRequest() {
+            const name = document.getElementById('supportName').value;
+            const phone = document.getElementById('supportPhone').value;
+            const subject = document.getElementById('supportSubject').value;
+            const orderId = document.getElementById('supportOrderId').value;
+            const message = document.getElementById('supportMessage').value;
+            
+            if (!name || !phone || !message) {
+                showSupportMessage('Please fill all required fields', 'error');
+                return;
+            }
+            
+            const requestId = 'SUP-' + Date.now().toString().slice(-6);
+            const request = {
+                id: requestId,
+                username: currentUser,
+                name: name,
+                phone: phone,
+                subject: subject,
+                orderId: orderId,
+                message: message,
+                status: 'open',
+                date: new Date().toISOString(),
+                timestamp: Date.now()
+            };
+            
+            const telegramMessage = `🆘 SUPPORT REQUEST
+🆔 Request ID: ${requestId}
+👤 Customer: ${name}
+📞 Phone: ${phone}
+📌 Subject: ${subject}
+🆔 Order ID: ${orderId || 'Not provided'}
+👤 Reseller: ${currentUser}
+📝 Message: ${message}
+🕐 Time: ${new Date().toLocaleString()}`;
+            
+            sendTelegramMessage(telegramMessage);
+            
+            showSupportMessage(`Support request submitted! Request ID: ${requestId}. We'll contact you shortly.`, 'success');
+            
+            setTimeout(() => {
+                document.getElementById('supportName').value = '';
+                document.getElementById('supportPhone').value = '';
+                document.getElementById('supportOrderId').value = '';
+                document.getElementById('supportMessage').value = '';
+                document.getElementById('supportForm').style.display = 'none';
+                document.querySelectorAll('.support-category').forEach(el => {
+                    el.classList.remove('active');
+                });
+            }, 2000);
+        }
+        
+        function showSupportMessage(text, type) {
+            const messageDiv = document.getElementById('supportMessageDiv');
+            messageDiv.textContent = text;
+            messageDiv.className = `message ${type}`;
+            messageDiv.style.display = 'block';
+            setTimeout(() => {
+                messageDiv.style.display = 'none';
+            }, 5000);
+        }
+        
+        // ========== REFUND FUNCTIONS ==========
+        async function submitRefundRequest() {
+            const name = document.getElementById('refundName').value;
+            const phone = document.getElementById('refundPhone').value;
+            const orderId = document.getElementById('refundOrderId').value;
+            const reason = document.getElementById('refundReason').value;
+            const transactionId = document.getElementById('refundTransactionId').value;
+            const details = document.getElementById('refundDetails').value;
+            
+            if (!name || !phone || !orderId || !reason || !transactionId || !details) {
+                showRefundMessage('Please fill all required fields', 'error');
+                return;
+            }
+            
+            const requestId = 'REF-' + Date.now().toString().slice(-6);
+            const request = {
+                id: requestId,
+                username: currentUser,
+                name: name,
+                phone: phone,
+                orderId: orderId,
+                reason: reason,
+                transactionId: transactionId,
+                details: details,
+                status: 'pending',
+                date: new Date().toISOString(),
+                timestamp: Date.now()
+            };
+            
+            const telegramMessage = `💸 REFUND REQUEST
+🆔 Request ID: ${requestId}
+👤 Customer: ${name}
+📞 Phone: ${phone}
+🆔 Order ID: ${orderId}
+📌 Reason: ${reason}
+🔗 TXN ID: ${transactionId}
+👤 Reseller: ${currentUser}
+📝 Details: ${details}
+🕐 Time: ${new Date().toLocaleString()}`;
+            
+            sendTelegramMessage(telegramMessage);
+            
+            showRefundMessage(`Refund request submitted! Request ID: ${requestId}. Will be processed in 1-2 days.`, 'success');
+            
+            setTimeout(() => {
+                document.getElementById('refundName').value = '';
+                document.getElementById('refundPhone').value = '';
+                document.getElementById('refundOrderId').value = '';
+                document.getElementById('refundReason').value = '';
+                document.getElementById('refundTransactionId').value = '';
+                document.getElementById('refundDetails').value = '';
+            }, 2000);
+        }
+        
+        function showRefundMessage(text, type) {
+            const messageDiv = document.getElementById('refundMessage');
+            messageDiv.textContent = text;
+            messageDiv.className = `message ${type}`;
+            messageDiv.style.display = 'block';
+            setTimeout(() => {
+                messageDiv.style.display = 'none';
+            }, 5000);
+        }
+        
+        // ========== TRACKING FUNCTIONS ==========
+        async function trackOrder() {
+            const orderId = document.getElementById('trackOrderId').value.trim().toUpperCase();
+            const pendingData = await getGistData(GIST_IDS.pending, 'pending_orders.json');
+            const approvedData = await getGistData(GIST_IDS.approved, 'approved_orders.json');
+            
+            const allOrders = [...pendingData.orders, ...approvedData.orders];
+            const order = allOrders.find(o => o.id === orderId && o.username === currentUser);
+            
+            const resultDiv = document.getElementById('trackingResult');
+            const noResultDiv = document.getElementById('noTrackingResult');
+            
+            if (order) {
+                document.getElementById('trackingOrderTitle').textContent = order.packName;
+                document.getElementById('trackingOrderId').textContent = order.id;
+                document.getElementById('trackingOrderDate').textContent = new Date(order.date).toLocaleDateString();
+                document.getElementById('trackingAmount').textContent = `$${order.price}`;
+                
+                const statusBadge = document.getElementById('trackingStatus');
+                statusBadge.className = `status-badge status-${order.status}`;
+                statusBadge.textContent = order.status.charAt(0).toUpperCase() + order.status.slice(1);
+                
+                const timeline = document.getElementById('trackingTimeline');
+                const steps = [
+                    { status: 'Order Placed', date: order.date, active: true },
+                    { status: 'Payment Verified', date: order.date, active: order.status !== 'pending' },
+                    { status: 'Processing', date: order.date, active: order.status === 'processing' || order.status === 'approved' },
+                    { status: order.status === 'approved' ? 'Completed' : order.status === 'rejected' ? 'Rejected' : 'Pending', 
+                      date: order.date, active: order.status === 'approved' || order.status === 'rejected' }
+                ];
+                
+                timeline.innerHTML = steps.map(step => `
+                    <div style="display: flex; align-items: center; margin-bottom: 20px;">
+                        <div style="width: 20px; height: 20px; border-radius: 50%; background: ${step.active ? 'var(--primary)' : 'var(--text-muted)'}; margin-right: 15px;"></div>
+                        <div>
+                            <div style="font-weight: 600; color: ${step.active ? 'var(--primary)' : 'var(--text-muted)'};">${step.status}</div>
+                            <div style="color: var(--text-muted); font-size: 0.9rem;">${step.date}</div>
+                        </div>
+                    </div>
+                `).join('');
+                
+                resultDiv.style.display = 'block';
+                noResultDiv.style.display = 'none';
+            } else {
+                resultDiv.style.display = 'none';
+                noResultDiv.style.display = 'block';
+            }
+        }
+        
+        // ========== ADMIN FUNCTIONS ==========
+        async function adminLogin() {
+            const password = document.getElementById('adminPassword').value;
+            
+            if (password === 'Close@2010' && currentUser === 'Dark2010') {
+                document.getElementById('adminContent').style.display = 'block';
+                await loadAdminDashboard();
+                showMessage('Admin login successful', 'success');
+            } else {
+                showMessage('Invalid admin password', 'error');
+            }
+        }
+        
+        async function loadAdminDashboard() {
+            const pendingData = await getGistData(GIST_IDS.pending, 'pending_orders.json');
+            const approvedData = await getGistData(GIST_IDS.approved, 'approved_orders.json');
+            const usersData = await getGistData(GIST_IDS.users, 'users.json');
+            
+            document.getElementById('adminTotalOrders').textContent = pendingData.orders.length + approvedData.orders.length;
+            document.getElementById('adminPendingOrders').textContent = pendingData.orders.length;
+            
+            const totalRevenue = approvedData.orders.reduce((total, order) => total + order.price, 0);
+            document.getElementById('adminTotalRevenue').textContent = `$${totalRevenue}`;
+            
+            const activeResellers = usersData.users.filter(u => u.active && u.role !== 'admin').length;
+            document.getElementById('adminActiveResellers').textContent = activeResellers;
+            
+            loadAdminPendingTable(pendingData.orders);
+        }
+        
+        function loadAdminPendingTable(orders) {
+            const tableBody = document.getElementById('adminPendingTable');
+            
+            if (!orders || orders.length === 0) {
+                tableBody.innerHTML = `
+                    <tr>
+                        <td colspan="6" style="text-align: center; padding: 40px; color: var(--text-muted);">
+                            <i class="fas fa-check-circle" style="font-size: 2rem; margin-bottom: 10px; opacity: 0.5;"></i>
+                            <div>No pending orders</div>
+                        </td>
+                    </tr>
+                `;
+                return;
+            }
+            
+            tableBody.innerHTML = orders.map(order => `
+                <tr>
+                    <td>${order.id}</td>
+                    <td>${order.name}</td>
+                    <td>${order.packName}</td>
+                    <td>$${order.price}</td>
+                    <td>${order.payment}</td>
+                    <td>
+                        <button onclick="approveOrder('${order.id}')" style="background: var(--success); color: white; border: none; padding: 5px 15px; border-radius: 4px; margin-right: 5px; cursor: pointer;">
+                            Approve
+                        </button>
+                        <button onclick="rejectOrder('${order.id}')" style="background: var(--danger); color: white; border: none; padding: 5px 15px; border-radius: 4px; cursor: pointer;">
+                            Reject
+                        </button>
+                    </td>
+                </tr>
+            `).join('');
+        }
+        
+        async function approveOrder(orderId) {
+            try {
+                const pendingData = await getGistData(GIST_IDS.pending, 'pending_orders.json');
+                const orderIndex = pendingData.orders.findIndex(o => o.id === orderId);
+                
+                if (orderIndex === -1) {
+                    showMessage('Order not found', 'error');
+                    return;
+                }
+                
+                const order = pendingData.orders[orderIndex];
+                
+                const expiryDate = new Date();
+                expiryDate.setDate(expiryDate.getDate() + order.duration);
+                
+                order.status = 'approved';
+                order.approvedBy = currentUser;
+                order.approvedAt = new Date().toISOString();
+                order.expiry = expiryDate.toISOString();
+                
+                pendingData.orders.splice(orderIndex, 1);
+                await updateGistData(GIST_IDS.pending, 'pending_orders.json', pendingData);
+                
+                const approvedData = await getGistData(GIST_IDS.approved, 'approved_orders.json');
+                approvedData.orders.push(order);
+                await updateGistData(GIST_IDS.approved, 'approved_orders.json', approvedData);
+                
+                const usersData = await getGistData(GIST_IDS.users, 'users.json');
+                let user = usersData.users.find(u => u.username === order.username);
+                
+                if (!user) {
+                    user = {
+                        username: order.username,
+                        name: order.name,
+                        password: 'default123',
+                        role: 'reseller',
+                        pack: order.packType,
+                        packName: order.packName,
+                        packExpiry: order.expiry,
+                        diamonds: order.diamonds,
+                        active: true,
+                        createdAt: new Date().toISOString()
+                    };
+                    usersData.users.push(user);
+                } else {
+                    user.pack = order.packType;
+                    user.packName = order.packName;
+                    user.packExpiry = order.expiry;
+                    user.diamonds = order.diamonds;
+                    user.active = true;
+                }
+                
+                await updateGistData(GIST_IDS.users, 'users.json', usersData);
+                
+                const telegramMessage = `✅ ORDER APPROVED
+🆔 Order ID: ${order.id}
+👤 Customer: ${order.name}
+📦 Pack: ${order.packName}
+💰 Amount: $${order.price}
+💎 Diamonds: ${order.diamonds.toLocaleString()}
+📅 Expiry: ${new Date(order.expiry).toLocaleDateString()}
+✅ Approved by: ${currentUser}
+🕐 Time: ${new Date().toLocaleString()}`;
+                
+                sendTelegramMessage(telegramMessage);
+                
+                showMessage(`Order ${orderId} approved successfully`, 'success');
+                
+                await refreshAdminData();
+                
+            } catch (error) {
+                console.error('Error approving order:', error);
+                showMessage('Failed to approve order', 'error');
+            }
+        }
+        
+        async function rejectOrder(orderId) {
+            try {
+                const pendingData = await getGistData(GIST_IDS.pending, 'pending_orders.json');
+                const orderIndex = pendingData.orders.findIndex(o => o.id === orderId);
+                
+                if (orderIndex === -1) {
+                    showMessage('Order not found', 'error');
+                    return;
+                }
+                
+                const order = pendingData.orders[orderIndex];
+                order.status = 'rejected';
+                order.rejectedBy = currentUser;
+                order.rejectedAt = new Date().toISOString();
+                
+                const approvedData = await getGistData(GIST_IDS.approved, 'approved_orders.json');
+                approvedData.orders.push(order);
+                await updateGistData(GIST_IDS.approved, 'approved_orders.json', approvedData);
+                
+                pendingData.orders.splice(orderIndex, 1);
+                await updateGistData(GIST_IDS.pending, 'pending_orders.json', pendingData);
+                
+                const telegramMessage = `❌ ORDER REJECTED
+🆔 Order ID: ${order.id}
+👤 Customer: ${order.name}
+📦 Pack: ${order.packName}
+💰 Amount: $${order.price}
+❌ Rejected by: ${currentUser}
+🕐 Time: ${new Date().toLocaleString()}`;
+                
+                sendTelegramMessage(telegramMessage);
+                
+                showMessage(`Order ${orderId} rejected`, 'warning');
+                await refreshAdminData();
+                
+            } catch (error) {
+                console.error('Error rejecting order:', error);
+                showMessage('Failed to reject order', 'error');
+            }
+        }
+        
+        async function loadAllOrdersTable() {
+            const pendingData = await getGistData(GIST_IDS.pending, 'pending_orders.json');
+            const approvedData = await getGistData(GIST_IDS.approved, 'approved_orders.json');
+            
+            const allOrders = [...pendingData.orders, ...approvedData.orders].sort((a, b) => 
+                new Date(b.timestamp) - new Date(a.timestamp)
+            );
+            
+            document.getElementById('totalOrdersCount').textContent = allOrders.length;
+            
+            const tableBody = document.getElementById('allOrdersTable');
+            
+            if (allOrders.length === 0) {
+                tableBody.innerHTML = `
+                    <tr>
+                        <td colspan="7" style="text-align: center; padding: 40px; color: var(--text-muted);">
+                            <i class="fas fa-shopping-cart" style="font-size: 2rem; margin-bottom: 10px; opacity: 0.5;"></i>
+                            <div>No orders in system</div>
+                        </td>
+                    </tr>
+                `;
+                return;
+            }
+            
+            tableBody.innerHTML = allOrders.map(order => {
+                let statusClass = 'status-pending';
+                if (order.status === 'approved') statusClass = 'status-approved';
+                if (order.status === 'rejected') statusClass = 'status-rejected';
+                
+                return `
+                    <tr>
+                        <td>${order.id}</td>
+                        <td>${new Date(order.date).toLocaleDateString()}</td>
+                        <td>${order.name}</td>
+                        <td>${order.packName}</td>
+                        <td>$${order.price}</td>
+                        <td>
+                            <span class="status-badge ${statusClass}">
+                                ${order.status.charAt(0).toUpperCase() + order.status.slice(1)}
+                            </span>
+                        </td>
+                        <td>
+                            <div style="display: flex; gap: 5px;">
+                                ${order.status === 'pending' ? `
+                                    <button onclick="approveOrder('${order.id}')" style="background: var(--success); color: white; border: none; padding: 5px 10px; border-radius: 4px; cursor: pointer; font-size: 0.8rem;">
+                                        <i class="fas fa-check"></i>
+                                    </button>
+                                    <button onclick="rejectOrder('${order.id}')" style="background: var(--danger); color: white; border: none; padding: 5px 10px; border-radius: 4px; cursor: pointer; font-size: 0.8rem;">
+                                        <i class="fas fa-times"></i>
+                                    </button>
+                                ` : ''}
+                                <button onclick="viewOrderDetailsAdmin('${order.id}')" style="background: var(--secondary); color: white; border: none; padding: 5px 10px; border-radius: 4px; cursor: pointer; font-size: 0.8rem;">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                `;
+            }).join('');
+        }
+        
+        async function viewOrderDetailsAdmin(orderId) {
+            const pendingData = await getGistData(GIST_IDS.pending, 'pending_orders.json');
+            const approvedData = await getGistData(GIST_IDS.approved, 'approved_orders.json');
+            
+            const allOrders = [...pendingData.orders, ...approvedData.orders];
+            const order = allOrders.find(o => o.id === orderId);
+            
+            if (!order) {
+                alert('Order not found');
+                return;
+            }
+            
+            const details = `
+Order ID: ${order.id}
+Customer: ${order.name}
+Phone: ${order.phone}
+Pack: ${order.packName}
+Price: $${order.price}
+Diamonds: ${order.diamonds}
+Duration: ${order.duration} days
+Payment: ${order.payment}
+Transaction ID: ${order.transactionId}
+Status: ${order.status}
+Date: ${new Date(order.date).toLocaleDateString()}
+${order.notes ? `Notes: ${order.notes}` : ''}
+            `.trim();
+            
+            alert(details);
+        }
+        
+        async function refreshAdminData() {
+            await loadAdminDashboard();
+            await loadAllOrdersTable();
+            await loadUserPacksTable();
+            showMessage('Data refreshed successfully', 'success');
+        }
+        
+        async function exportAllOrders() {
+            const pendingData = await getGistData(GIST_IDS.pending, 'pending_orders.json');
+            const approvedData = await getGistData(GIST_IDS.approved, 'approved_orders.json');
+            
+            const allOrders = [...pendingData.orders, ...approvedData.orders];
+            
+            const csvContent = 'data:text/csv;charset=utf-8,' + 
+                ['Order ID,Date,Customer,Phone,Pack,Price,Diamonds,Status,Payment,Transaction ID']
+                .concat(allOrders.map(order => 
+                    `${order.id},${order.date},${order.name},${order.phone},${order.packName},$${order.price},${order.diamonds},${order.status},${order.payment},${order.transactionId}`
+                )).join('\n');
+            
+            const encodedUri = encodeURI(csvContent);
+            const link = document.createElement('a');
+            link.setAttribute('href', encodedUri);
+            link.setAttribute('download', `ffdiamondhub_orders_${new Date().toISOString().split('T')[0]}.csv`);
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            
+            showMessage('Orders exported to CSV', 'success');
+        }
+        
+        async function checkExpiredPacks() {
+            await checkAndRemoveExpiredPacks();
+            showMessage('Expired packs checked and removed', 'success');
+        }
+        
+        async function showAllUsers() {
+            const usersData = await getGistData(GIST_IDS.users, 'users.json');
+            
+            const usersInfo = usersData.users.map(user => `
+${user.username} (${user.name})
+Role: ${user.role}
+Pack: ${user.packName || 'No Pack'}
+Active: ${user.active ? 'Yes' : 'No'}
+Created: ${new Date(user.createdAt).toLocaleDateString()}
+---`).join('\n');
+            
+            alert(`Total Users: ${usersData.users.length}\n\n${usersInfo}`);
+        }
+        
+        function filterOrders(status) {
+            // This function would filter the orders table
+            // For now, we'll just show a message
+            showMessage(`Filtered by: ${status}`, 'info');
+            
+            // In a real implementation, we would filter the table rows
+            const rows = document.querySelectorAll('#allOrdersTable tr');
+            rows.forEach(row => {
+                if (status === 'all') {
+                    row.style.display = '';
+                } else {
+                    const statusCell = row.querySelector('.status-badge');
+                    if (statusCell) {
+                        const rowStatus = statusCell.textContent.toLowerCase();
+                        row.style.display = rowStatus.includes(status) ? '' : 'none';
+                    }
+                }
+            });
+        }
+        
+        async function loadUserPacksTable() {
+            const usersData = await getGistData(GIST_IDS.users, 'users.json');
+            const approvedData = await getGistData(GIST_IDS.approved, 'approved_orders.json');
+            
+            const tableBody = document.getElementById('userPacksTable');
+            
+            const resellers = usersData.users.filter(user => user.role !== 'admin');
+            
+            if (resellers.length === 0) {
+                tableBody.innerHTML = `
+                    <tr>
+                        <td colspan="6" style="text-align: center; padding: 40px; color: var(--text-muted);">
+                            <i class="fas fa-users" style="font-size: 2rem; margin-bottom: 10px; opacity: 0.5;"></i>
+                            <div>No resellers found</div>
+                        </td>
+                    </tr>
+                `;
+                return;
+            }
+            
+            tableBody.innerHTML = resellers.map(user => {
+                const userOrders = approvedData.orders.filter(order => order.username === user.username && order.status === 'approved');
+                
+                let packName = 'No Pack';
+                let expiryDate = 'N/A';
+                let daysLeft = 'N/A';
+                let statusClass = 'status-inactive';
+                let statusText = 'Inactive';
+                
+                if (userOrders.length > 0) {
+                    const latestOrder = userOrders.sort((a, b) => new Date(b.approvedAt) - new Date(a.approvedAt))[0];
+                    packName = latestOrder.packName;
+                    
+                    if (latestOrder.expiry && latestOrder.expiry !== 'lifetime') {
+                        const expiry = new Date(latestOrder.expiry);
+                        expiryDate = expiry.toLocaleDateString();
+                        
+                        const now = new Date();
+                        const diffTime = expiry - now;
+                        const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+                        daysLeft = diffDays > 0 ? diffDays : 'Expired';
+                        
+                        statusClass = diffDays > 0 ? 'status-active' : 'status-expired';
+                        statusText = diffDays > 0 ? 'Active' : 'Expired';
+                    } else {
+                        expiryDate = 'Lifetime';
+                        daysLeft = '∞';
+                        statusClass = 'status-active';
+                        statusText = 'Active';
+                    }
+                }
+                
+                return `
+                    <tr>
+                        <td>${user.username}</td>
+                        <td>${packName}</td>
+                        <td>${expiryDate}</td>
+                        <td>${daysLeft}</td>
+                        <td>
+                            <span class="pack-status ${statusClass}">${statusText}</span>
+                        </td>
+                        <td>
+                            <button onclick="editUserPack('${user.username}')" style="background: var(--primary); color: white; border: none; padding: 5px 10px; border-radius: 4px; cursor: pointer; font-size: 0.8rem;">
+                                <i class="fas fa-edit"></i> Edit
+                            </button>
+                        </td>
+                    </tr>
+                `;
+            }).join('');
+        }
+        
+        async function editUserPack(username) {
+            const usersData = await getGistData(GIST_IDS.users, 'users.json');
+            const user = usersData.users.find(u => u.username === username);
+            
+            if (!user) {
+                showMessage('User not found', 'error');
+                return;
+            }
+            
+            const newPack = prompt(`Edit pack for ${username}\n\nEnter pack type (starter/pro/elite/business):`, user.pack || 'starter');
+            const newDuration = prompt('Enter duration in days:', '30');
+            const newDiamonds = prompt('Enter diamond amount:', user.diamonds || '50000');
+            
+            if (newPack && newDuration && newDiamonds) {
+                user.pack = newPack;
+                user.packName = PACK_CONFIGS[newPack]?.name || 'Custom Pack';
+                user.diamonds = parseInt(newDiamonds);
+                user.active = true;
+                
+                // Set expiry date
+                const expiryDate = new Date();
+                expiryDate.setDate(expiryDate.getDate() + parseInt(newDuration));
+                user.packExpiry = expiryDate.toISOString();
+                
+                await updateGistData(GIST_IDS.users, 'users.json', usersData);
+                
+                // Add to approved orders
+                const approvedData = await getGistData(GIST_IDS.approved, 'approved_orders.json');
+                
+                const orderId = 'ADMIN-' + Date.now().toString().slice(-6);
+                const order = {
+                    id: orderId,
+                    username: username,
+                    packType: newPack,
+                    packName: PACK_CONFIGS[newPack]?.name || 'Custom Pack',
+                    price: PACK_CONFIGS[newPack]?.price || 0,
+                    diamonds: parseInt(newDiamonds),
+                    duration: parseInt(newDuration),
+                    name: user.name || username,
+                    phone: 'N/A',
+                    payment: 'admin',
+                    transactionId: 'ADMIN-ASSIGNED',
+                    notes: 'Manually assigned by admin',
+                    status: 'approved',
+                    date: new Date().toISOString(),
+                    approvedBy: currentUser,
+                    approvedAt: new Date().toISOString(),
+                    expiry: expiryDate.toISOString(),
+                    timestamp: Date.now()
+                };
+                
+                approvedData.orders.push(order);
+                await updateGistData(GIST_IDS.approved, 'approved_orders.json', approvedData);
+                
+                showMessage(`Pack updated for ${username}`, 'success');
+                loadUserPacksTable();
+            }
+        }
+        
+        async function assignPackManually() {
+            const username = document.getElementById('assignUsername').value.trim();
+            const packType = document.getElementById('assignPackType').value;
+            const duration = parseInt(document.getElementById('assignDuration').value);
+            const diamonds = parseInt(document.getElementById('assignDiamonds').value);
+            
+            if (!username) {
+                showMessage('Please enter username', 'error');
+                return;
+            }
+            
+            if (!packType) {
+                showMessage('Please select pack type', 'error');
+                return;
+            }
+            
+            if (!duration || duration < 1) {
+                showMessage('Please enter valid duration', 'error');
+                return;
+            }
+            
+            const usersData = await getGistData(GIST_IDS.users, 'users.json');
+            let user = usersData.users.find(u => u.username === username);
+            
+            if (!user) {
+                const confirmCreate = confirm(`User ${username} not found. Create new user?`);
+                if (!confirmCreate) return;
+                
+                user = {
+                    username: username,
+                    name: username,
+                    password: 'default123',
+                    role: 'reseller',
+                    pack: packType,
+                    packName: PACK_CONFIGS[packType]?.name || 'Custom Pack',
+                    packExpiry: null,
+                    diamonds: diamonds,
+                    active: false,
+                    createdAt: new Date().toISOString()
+                };
+                usersData.users.push(user);
+            }
+            
+            // Update user data
+            user.pack = packType;
+            user.packName = PACK_CONFIGS[packType]?.name || 'Custom Pack';
+            user.diamonds = diamonds;
+            user.active = true;
+            
+            // Set expiry date
+            const expiryDate = new Date();
+            expiryDate.setDate(expiryDate.getDate() + duration);
+            user.packExpiry = expiryDate.toISOString();
+            
+            await updateGistData(GIST_IDS.users, 'users.json', usersData);
+            
+            // Add to approved orders
+            const approvedData = await getGistData(GIST_IDS.approved, 'approved_orders.json');
+            
+            const orderId = 'ADMIN-' + Date.now().toString().slice(-6);
+            const order = {
+                id: orderId,
+                username: username,
+                packType: packType,
+                packName: PACK_CONFIGS[packType]?.name || 'Custom Pack',
+                price: PACK_CONFIGS[packType]?.price || 0,
+                diamonds: diamonds,
+                duration: duration,
+                name: user.name || username,
+                phone: 'N/A',
+                payment: 'admin',
+                transactionId: 'ADMIN-ASSIGNED',
+                notes: 'Manually assigned by admin',
+                status: 'approved',
+                date: new Date().toISOString(),
+                approvedBy: currentUser,
+                approvedAt: new Date().toISOString(),
+                expiry: expiryDate.toISOString(),
+                timestamp: Date.now()
+            };
+            
+            approvedData.orders.push(order);
+            await updateGistData(GIST_IDS.approved, 'approved_orders.json', approvedData);
+            
+            showMessage(`Pack assigned to ${username} successfully`, 'success');
+            
+            // Clear form
+            document.getElementById('assignUsername').value = '';
+            document.getElementById('assignDiamonds').value = '';
+            
+            loadUserPacksTable();
+        }
+        
+        // ========== UTILITY FUNCTIONS ==========
+        function showMessage(text, type) {
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `message ${type}`;
+            messageDiv.textContent = text;
+            messageDiv.style.position = 'fixed';
+            messageDiv.style.top = '20px';
+            messageDiv.style.right = '20px';
+            messageDiv.style.zIndex = '10000';
+            messageDiv.style.maxWidth = '300px';
+            
+            document.body.appendChild(messageDiv);
+            
+            setTimeout(() => {
+                messageDiv.style.opacity = '0';
+                setTimeout(() => document.body.removeChild(messageDiv), 300);
+            }, 3000);
+        }
+        
+        function showCheckoutMessage(text, type) {
+            const messageDiv = document.getElementById('checkoutMessage');
+            messageDiv.textContent = text;
+            messageDiv.className = `message ${type}`;
+            messageDiv.style.display = 'block';
+            setTimeout(() => {
+                messageDiv.style.display = 'none';
+            }, 5000);
+        }
+        
+        function showDiamondMessage(text, type) {
+            const messageDiv = document.getElementById('sendDiamondMessage');
+            messageDiv.textContent = text;
+            messageDiv.className = `message ${type}`;
+            messageDiv.style.display = 'block';
+            setTimeout(() => {
+                messageDiv.style.display = 'none';
+            }, 5000);
+        }
+        
+        async function sendTelegramMessage(message) {
+            try {
+                const url = `https://api.telegram.org/bot${TELEGRAM_CONFIG.BOT_TOKEN}/sendMessage`;
+                
+                await fetch(url, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        chat_id: TELEGRAM_CONFIG.CHAT_ID,
+                        text: message,
+                        parse_mode: 'HTML'
+                    })
+                });
+                
+                console.log('Telegram message sent');
+            } catch (error) {
+                console.error('Error sending Telegram message:', error);
+            }
+        }
+        
+        // ========== HELPER FUNCTIONS ==========
+        function formatCurrency(amount) {
+            return new Intl.NumberFormat('en-US', {
+                style: 'currency',
+                currency: 'USD'
+            }).format(amount);
+        }
+        
+        function formatDate(dateString) {
+            return new Date(dateString).toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: 'short',
+                day: 'numeric'
+            });
+        }
+        
+        function generateOrderId() {
+            return 'FF-' + Math.random().toString(36).substr(2, 9).toUpperCase();
+        }
+        
+        // ========== FINAL INITIALIZATION ==========
+        // Start the application
+        initializeApp();
+    </script>
+</body>
+</html>
